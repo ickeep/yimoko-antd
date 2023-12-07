@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ["react-app/jest", 'eslint-config-tencent', 'eslint-config-tencent/ts'],
+  extends: ["react-app", "react-app/jest", 'eslint-config-tencent', 'eslint-config-tencent/ts'],
   env: {
     jest: true,
   },
