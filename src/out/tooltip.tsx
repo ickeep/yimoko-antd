@@ -2,7 +2,7 @@ import { observer } from '@formily/react';
 import { Tooltip as ATooltip, TooltipProps as ATooltipProps } from 'antd';
 import { isValidElement, useMemo } from 'react';
 
-import { Icon, IconProps } from './icon';
+import { Icon, IconProps } from '../base/icon';
 
 export type TooltipProps = ATooltipProps & {
   value?: ATooltipProps['children']

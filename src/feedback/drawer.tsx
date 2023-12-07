@@ -3,9 +3,9 @@ import { BoxContentProvider, BoxContentRender, IStore, useBoxContent, useBoxStor
 import { ButtonProps, Drawer as ADrawer, DrawerProps as ADrawerProps, Row, RowProps, Space } from 'antd';
 import { ReactElement, FC, Component, useMemo, ReactNode } from 'react';
 
-import { CancelTrigger } from './cancel-trigger';
-import { OkTrigger } from './ok-trigger';
-import { RunTrigger } from './run-trigger';
+import { CancelTrigger } from '../out/cancel-trigger';
+import { OkTrigger } from '../out/ok-trigger';
+import { RunTrigger } from '../out/run-trigger';
 
 interface IContentProps {
   isBoxContent?: boolean

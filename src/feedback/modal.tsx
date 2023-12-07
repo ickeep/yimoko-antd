@@ -4,7 +4,7 @@ import { Modal as AModal, ModalProps as AModalProps } from 'antd';
 import { ModalFunc } from 'antd/lib/modal/confirm';
 import { ReactElement, FC, Component, useMemo, useEffect, useRef } from 'react';
 
-import { trigStoreRun } from './run-trigger';
+import { trigStoreRun } from '../out/run-trigger';
 
 interface IContentProps {
   isBoxContent?: boolean

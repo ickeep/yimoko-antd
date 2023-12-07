@@ -3,7 +3,8 @@ import { judgeIsEmpty, RenderValue } from '@yimoko/store';
 import { Alert, AlertProps, Space, Spin, SpinProps, Typography } from 'antd';
 
 import { CSSDeeps, JSDeep, useLoadDepend } from '../hook/use-load-depend';
-import { Icon } from '../out/icon';
+
+import { Icon } from './icon';
 
 export interface LoadDependProps {
   js?: JSDeep,
