@@ -39,11 +39,11 @@
   },
   "scripts": {
     "lint": "eslint ./src --fix --ext ts,tsx",
-    "build": "react-scripts build",
+    "build": "craco build",
     "library": "vite build",
-    "start": "react-scripts start",
-    "test:unit": "react-scripts test  --coverage --watchAll=false",
-    "test:watch": "react-scripts test --coverage --watchAll"
+    "start": "craco start",
+    "test:unit": "craco test  --coverage --watchAll=false",
+    "test:watch": "craco test --coverage --watchAll"
   },
   "eslintConfig": {
     "extends": [
@@ -76,6 +76,7 @@
   },
   "devDependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@craco/craco": "^7.1.0",
     "@types/lodash-es": "^4.17.12",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint-config-tencent": "^1.0.4",

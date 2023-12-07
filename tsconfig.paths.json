@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@/library": [
+        "src/library"
+      ],
+      "@/demo/*": [
+        "src/_demo/*"
+      ]
+    }
+  }
+}

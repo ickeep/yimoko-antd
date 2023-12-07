@@ -51,7 +51,15 @@ export default defineConfig({
   plugins: [
     react({ jsxRuntime: 'classic' }),
     dts({
-      entryRoot: path.resolve(__dirname, `src/library.ts`),
+      // 忽略文件
+      exclude: [
+        'src/_demo',
+        'src/index.tsx',
+        'src/react-app-env.d.ts',
+        'src/reportWebVitals.ts',
+        'src/setupTests.ts',
+      ],
+      entryRoot: path.resolve(__dirname, `src`),
       outDir: path.resolve(__dirname, `types`),
     }),
   ],
