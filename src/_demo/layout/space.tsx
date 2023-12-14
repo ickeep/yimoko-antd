@@ -1,16 +1,27 @@
 import { StorePage } from '@yimoko/store';
 
-import { Button, Space, Tabs } from '@/library';
+import { Button, Divider, Input, Space, Tabs } from '@/library';
 
 export const SpaceDemo = () => (
   <div>
     <Tabs defaultActiveKey="schema" items={[
-      { key: 'JSX', label: 'JSX 调用', children: <Space><Button>1</Button><Button>2</Button></Space> },
+      {
+        key: 'JSX', label: 'JSX 调用', children: <SpaceJSX />,
+      },
       { key: 'schema', label: 'Schema', children: <SpaceSchema /> },
     ]} />
   </div>
 );
-
+const SpaceJSX = () => (
+  <div>
+    <Space><Button>1</Button><Button>2</Button></Space>
+    <Divider />
+    <Space.Compact block>
+      <Input style={{ width: '20%' }} defaultValue="0571" />
+      <Input style={{ width: '30%' }} defaultValue="26888888" />
+    </Space.Compact>
+  </div>
+);
 
 const SpaceSchema = () => (
   <StorePage
@@ -48,6 +59,35 @@ const SpaceSchema = () => (
                 'x-component-props': {
                   type: 'vertical',
                 },
+              },
+            },
+          },
+        },
+        divider: {
+          type: 'void',
+          'x-component': 'Divider',
+        },
+        compact: {
+          type: 'void',
+          'x-component': 'Space.Compact',
+          'x-component-props': {
+            block: true,
+          },
+          properties: {
+            input1: {
+              type: 'void',
+              'x-component': 'Input',
+              'x-component-props': {
+                style: { width: '20%' },
+                defaultValue: '0571',
+              },
+            },
+            input2: {
+              type: 'void',
+              'x-component': 'Input',
+              'x-component-props': {
+                style: { width: '30%' },
+                defaultValue: '26888888',
               },
             },
           },

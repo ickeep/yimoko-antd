@@ -9,3 +9,5 @@ export const Space = (props: SpaceProps) => {
     <AntSpace {...rest} split={curSplit} />
   );
 };
+
+Space.Compact = AntSpace.Compact;
