@@ -2,8 +2,8 @@ import { observer } from '@formily/react';
 import { IOptionsAPIProps, useAdditionalNode, useAPIOptions } from '@yimoko/store';
 import { Steps as AntSteps, StepProps, StepsProps } from 'antd';
 import { FC } from 'react';
-import { getAutoIcon } from 'src/base/icon';
 
+import { getAutoIcon } from '../base/icon';
 
 type IStepsFC = FC<StepsProps & Omit<IOptionsAPIProps<keyof StepProps>, 'valueType'>>;
 

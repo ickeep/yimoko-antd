@@ -27,6 +27,6 @@ type IDropdown = IDropdownFC & {
   Button: typeof DButton;
 };
 
-const Dropdown = DropdownFC as IDropdown;
+export const Dropdown = DropdownFC as IDropdown;
 
 Dropdown.Button = DButton;
