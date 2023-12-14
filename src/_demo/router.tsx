@@ -4,6 +4,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 
 import { ButtonDemo } from './base/button';
 import { FlexDemo } from './layout/flex';
+import { GridDemo } from './layout/grid';
 
 
 export const ROUTES_CONF: Array<IRouteConf> = [
@@ -18,6 +19,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
     path: '/layout/', name: '布局',
     children: [
       { path: 'flex', name: 'Flex', component: FlexDemo },
+      { path: 'grid', name: 'Grid 栅格', component: GridDemo },
     ],
   },
 ];
