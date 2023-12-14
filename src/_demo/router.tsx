@@ -5,6 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { ButtonDemo } from './base/button';
 import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
+import { SpaceDemo } from './layout/space';
 
 
 export const ROUTES_CONF: Array<IRouteConf> = [
@@ -20,6 +21,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
     children: [
       { path: 'flex', name: 'Flex', component: FlexDemo },
       { path: 'grid', name: 'Grid 栅格', component: GridDemo },
+      { path: 'space', name: 'Space间距', component: SpaceDemo },
     ],
   },
 ];

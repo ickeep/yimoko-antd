@@ -1,3 +1,11 @@
-import { Space as AntSpace } from 'antd';
+import { useAdditionalNode } from '@yimoko/store';
+import { Space as AntSpace, SpaceProps } from 'antd';
 
-export const Space = AntSpace;
+export const Space = (props: SpaceProps) => {
+  const { split, ...rest } = props;
+  const curSplit = useAdditionalNode('split', split);
+
+  return (
+    <AntSpace {...rest} split={curSplit} />
+  );
+};
