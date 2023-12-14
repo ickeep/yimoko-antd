@@ -1,3 +1,9 @@
-import { Button as AntButton } from 'antd';
+import { Button as AntButton, ButtonProps } from 'antd';
 
-export const Button = AntButton;
+import { getAutoIcon } from './icon';
+
+export const Button = (props: ButtonProps) => {
+  const { icon, ...args } = props;
+  return <AntButton {...args} icon={getAutoIcon(icon)} />;
+};
+

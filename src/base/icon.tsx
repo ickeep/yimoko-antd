@@ -3,7 +3,7 @@ import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/
 import { judgeIsSuccess, useAPIExecutor, useConfig } from '@yimoko/store';
 import { Spin } from 'antd';
 import htmr from 'htmr';
-import { HTMLAttributes, useEffect, useMemo, useState } from 'react';
+import { HTMLAttributes, ReactNode, useEffect, useMemo, useState } from 'react';
 
 import { IConfig } from '../store/config';
 
@@ -44,4 +44,11 @@ export const Icon = (props: IconProps) => {
   }
 
   return <Spin size='small' spinning={loading} />;
+};
+
+export const getAutoIcon = (name: ReactNode) => {
+  if (typeof name === 'string' && name) {
+    return <Icon name={name} />;
+  }
+  return name;
 };

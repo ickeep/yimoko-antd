@@ -3,14 +3,21 @@ import { DataNode } from 'antd/es/tree';
 import { Link, Route, Routes } from 'react-router-dom';
 
 import { ButtonDemo } from './base/button';
+import { FlexDemo } from './layout/flex';
 
 
 export const ROUTES_CONF: Array<IRouteConf> = [
-  { path: '/', component: () => (<Tree treeData={ROUTER_TREE_DATA} />), name: 'index' },
+  { path: '/', name: 'index', component: () => (<Tree treeData={ROUTER_TREE_DATA} />) },
   {
     path: '/base/', name: '基础',
     children: [
-      { path: 'button', component: ButtonDemo, name: '按钮' },
+      { path: 'button', name: '按钮', component: ButtonDemo },
+    ],
+  },
+  {
+    path: '/layout/', name: '布局',
+    children: [
+      { path: 'flex', name: 'Flex', component: FlexDemo },
     ],
   },
 ];
