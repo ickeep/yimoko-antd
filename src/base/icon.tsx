@@ -46,7 +46,7 @@ export const Icon = (props: IconProps) => {
   return <Spin size='small' spinning={loading} />;
 };
 
-export const getAutoIcon = (name: ReactNode) => {
+export const getAutoIcon: <T = ReactNode>(name: T) => (T | ReactNode) = (name) => {
   if (typeof name === 'string' && name) {
     return <Icon name={name} />;
   }
