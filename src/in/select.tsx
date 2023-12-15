@@ -33,6 +33,11 @@ export const Select = observer((props: SelectProps) => {
     return value;
   }, [mode, splitter, value]);
 
+  const newProps: SelectProps = { ...args };
+  if (curValue !== undefined) {
+    newProps.value = curValue;
+  }
+
   return (
     <AntSelect<any, any>
       allowClear={!loading}
@@ -41,7 +46,6 @@ export const Select = observer((props: SelectProps) => {
       {...searchProps}
       {...args}
       mode={mode}
-      value={curValue}
       onChange={(val, options) => {
         onChange?.(valueType === 'string' && Array.isArray(val) ? val.join(splitter) : val, options);
       }}

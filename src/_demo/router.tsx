@@ -3,6 +3,7 @@ import { DataNode } from 'antd/es/tree';
 import { Link, Route, Routes } from 'react-router-dom';
 
 import { ButtonDemo } from './base/button';
+import { CheckboxDemo } from './in/checkbox';
 import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
@@ -22,6 +23,11 @@ export const ROUTES_CONF: Array<IRouteConf> = [
       { path: 'flex', name: 'Flex', component: FlexDemo },
       { path: 'grid', name: 'Grid 栅格', component: GridDemo },
       { path: 'space', name: 'Space间距', component: SpaceDemo },
+    ],
+  },
+  {
+    path: '/in/', name: '数据录入', children: [
+      { path: 'checkbox', name: 'Checkbox 多选框', component: CheckboxDemo },
     ],
   },
 ];

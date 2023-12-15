@@ -48,10 +48,14 @@ const CascaderFC: <DataNodeType extends BaseOptionType = any>(props: ICascaderPr
     return value;
   }, [rest.multiple, splitter, value]);
 
+  const newProps: CascaderProps = { ...rest };
+  if (curValue !== undefined) {
+    newProps.value = curValue;
+  }
+
   return (
     <AntCascader
       {...rest}
-      value={curValue}
       fieldNames={curKeys}
       options={data}
       allowClear={curAllowClear}
@@ -91,10 +95,14 @@ const Panel: ICascaderPanelFC = observer((props) => {
     return value;
   }, [rest.multiple, splitter, value]);
 
+  const newProps: CascaderPanelProps = { ...rest };
+  if (curValue !== undefined) {
+    newProps.value = curValue;
+  }
+
   return (
     <AntCascader.Panel
       {...rest}
-      value={curValue}
       fieldNames={curKeys}
       options={data}
       expandIcon={getAutoIcon(expandIcon)}
