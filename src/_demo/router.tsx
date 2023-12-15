@@ -5,6 +5,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import { ButtonDemo } from './base/button';
 import { CheckboxDemo } from './in/checkbox';
 import { ColorPickerDemo } from './in/color-picker';
+import { DatePickerDemo } from './in/date-picker';
 import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
@@ -36,6 +37,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
     path: '/in/', name: '数据录入', children: [
       { path: 'checkbox', name: 'Checkbox 多选框', component: CheckboxDemo },
       { path: 'colorPicker', name: 'ColorPicker 颜色选择器', component: ColorPickerDemo },
+      { path: 'datePicker', name: 'DatePicker 日期选择器', component: DatePickerDemo },
     ],
   },
 ];
