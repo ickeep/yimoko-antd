@@ -2,11 +2,12 @@ import { useAdditionalNode } from '@yimoko/store';
 import { Input as AntInput, InputProps, InputRef } from 'antd';
 import { PasswordProps, SearchProps, TextAreaProps } from 'antd/lib/input';
 import { forwardRef } from 'react';
+import { getAllowClear } from 'src/base/icon';
 
 const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
   const {
     onChange,
-    prefix, suffix, addonBefore, addonAfter,
+    prefix, suffix, addonBefore, addonAfter, allowClear,
     ...rest } = props;
 
   const curPrefix = useAdditionalNode('prefix', prefix);
@@ -18,6 +19,7 @@ const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange: 
     <AntInput
       {...rest}
       ref={ref}
+      allowClear={getAllowClear(allowClear)}
       prefix={curPrefix}
       suffix={curSuffix}
       addonBefore={curAddonBefore}
@@ -27,12 +29,13 @@ const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange: 
 });
 
 const TextArea = forwardRef<InputRef, Omit<TextAreaProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLTextAreaElement>) => void }>((props, ref) => {
-  const { onChange, ...rest } = props;
+  const { onChange, allowClear, ...rest } = props;
 
   return (
     <AntInput.TextArea
       {...rest}
       ref={ref}
+      allowClear={getAllowClear(allowClear)}
       onChange={e => onChange?.(e.target.value, e)}
     />);
 });
@@ -40,7 +43,7 @@ const TextArea = forwardRef<InputRef, Omit<TextAreaProps, 'onChange'> & { onChan
 const Password = forwardRef<InputRef, Omit<PasswordProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
   const {
     onChange,
-    prefix, suffix, addonBefore, addonAfter,
+    prefix, suffix, addonBefore, addonAfter, allowClear,
     ...rest } = props;
 
   const curPrefix = useAdditionalNode('prefix', prefix);
@@ -56,6 +59,7 @@ const Password = forwardRef<InputRef, Omit<PasswordProps, 'onChange'> & { onChan
       suffix={curSuffix}
       addonBefore={curAddonBefore}
       addonAfter={curAddonAfter}
+      allowClear={getAllowClear(allowClear)}
       onChange={e => onChange?.(e.target.value, e)}
     />);
 });
@@ -63,7 +67,7 @@ const Password = forwardRef<InputRef, Omit<PasswordProps, 'onChange'> & { onChan
 const Search = forwardRef<InputRef, Omit<SearchProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
   const {
     onChange,
-    prefix, suffix, addonBefore, addonAfter, enterButton,
+    prefix, suffix, addonBefore, addonAfter, enterButton, allowClear,
     ...rest } = props;
 
   const curPrefix = useAdditionalNode('prefix', prefix);
@@ -81,6 +85,7 @@ const Search = forwardRef<InputRef, Omit<SearchProps, 'onChange'> & { onChange: 
       addonBefore={curAddonBefore}
       addonAfter={curAddonAfter}
       enterButton={curEnterButton}
+      allowClear={getAllowClear(allowClear)}
       onChange={e => onChange?.(e.target.value, e)}
     />);
 });

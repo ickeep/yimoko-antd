@@ -6,7 +6,7 @@ import { BaseOptionType } from 'antd/lib/cascader';
 import { CascaderPanelProps } from 'antd/lib/cascader/Panel';
 import { ComponentProps, FC, ReactNode, useMemo } from 'react';
 
-import { getAutoIcon } from '../base/icon';
+import { getAllowClear, getAutoIcon } from '../base/icon';
 
 type ValueType = string | number | (string | number)[];
 
@@ -32,16 +32,6 @@ const CascaderFC: <DataNodeType extends BaseOptionType = any>(props: ICascaderPr
 
   const [data] = useAPIOptions<any>(options, api, curKeys, splitter);
 
-  const curAllowClear = useMemo(() => {
-    if (typeof allowClear === 'object' && allowClear.clearIcon) {
-      return {
-        ...allowClear,
-        clearIcon: getAutoIcon(allowClear.clearIcon),
-      };
-    }
-    return allowClear;
-  }, [allowClear]);
-
   const curValue = useMemo(() => {
     if (rest.multiple && typeof value === 'string') {
       return strToArr(value, splitter);
@@ -59,7 +49,7 @@ const CascaderFC: <DataNodeType extends BaseOptionType = any>(props: ICascaderPr
       {...rest}
       fieldNames={curKeys}
       options={data}
-      allowClear={curAllowClear}
+      allowClear={getAllowClear(allowClear as any)}
       expandIcon={getAutoIcon(expandIcon)}
       suffixIcon={getAutoIcon(suffixIcon)}
       removeIcon={getAutoIcon(removeIcon)}

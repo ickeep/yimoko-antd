@@ -4,7 +4,7 @@ import { RangePickerBaseProps, RangePickerDateProps, RangePickerTimeProps } from
 import dayjs, { Dayjs, OptionType } from 'dayjs';
 import { forwardRef, useMemo } from 'react';
 
-import { getAutoIcon } from '../base/icon';
+import { getAllowClear, getAutoIcon } from '../base/icon';
 
 export type DatePickerProps<T = string> = Omit<AntDatePickerProps, 'defaultValue' | 'value' | 'onChange'> & {
   value?: T
@@ -20,7 +20,7 @@ type Ref = React.ElementRef<typeof AntDatePicker>;
 const DatePickerFC: <T = string>(props: DatePickerProps<T> & { ref?: React.Ref<Ref> }) => any = forwardRef<Ref, DatePickerProps<any>>((props, ref) => {
   const {
     defaultValue, value, onChange, dataValueType, format, picker,
-    nextIcon, prevIcon, suffixIcon, superNextIcon, superPrevIcon,
+    nextIcon, prevIcon, suffixIcon, superNextIcon, superPrevIcon, allowClear,
     ...rest
   } = props;
 
@@ -62,6 +62,7 @@ const DatePickerFC: <T = string>(props: DatePickerProps<T> & { ref?: React.Ref<R
       suffixIcon={getAutoIcon(suffixIcon)}
       superNextIcon={getAutoIcon(superNextIcon)}
       superPrevIcon={getAutoIcon(superPrevIcon)}
+      allowClear={getAllowClear(allowClear)}
       {...newProps}
     />
   );
@@ -84,7 +85,7 @@ export type RangePickerProps<T = string> = AntRangePickerProps & {
 const RangePicker: <T = string>(props: RangePickerProps<T>) => any = (props: RangePickerProps<any>) => {
   const {
     defaultValue, valueType, value, splitter = ',', onChange, dataValueType, format, picker,
-    nextIcon, prevIcon, suffixIcon, superNextIcon, superPrevIcon,
+    nextIcon, prevIcon, suffixIcon, superNextIcon, superPrevIcon, allowClear,
     separator,
     ...rest
   } = props;
@@ -129,6 +130,7 @@ const RangePicker: <T = string>(props: RangePickerProps<T>) => any = (props: Ran
       superNextIcon={getAutoIcon(superNextIcon)}
       superPrevIcon={getAutoIcon(superPrevIcon)}
       separator={curSeparator}
+      allowClear={getAllowClear(allowClear)}
       {...newProps}
     />
   );

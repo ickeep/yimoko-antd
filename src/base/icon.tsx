@@ -52,3 +52,11 @@ export const getAutoIcon: <T = ReactNode>(name: T) => (T | ReactNode) = (name) =
   }
   return name;
 };
+
+
+export const getAllowClear = (v?: boolean | { clearIcon?: ReactNode | string }) => {
+  if (typeof v === 'object' && v?.clearIcon) {
+    return { clearIcon: getAutoIcon(v.clearIcon) };
+  }
+  return v;
+};
