@@ -4,7 +4,7 @@ import { Cascader as AntCascader, CascaderProps } from 'antd';
 
 import { BaseOptionType } from 'antd/lib/cascader';
 import { CascaderPanelProps } from 'antd/lib/cascader/Panel';
-import { FC, ReactNode, useMemo } from 'react';
+import { ComponentProps, FC, ReactNode, useMemo } from 'react';
 
 import { getAutoIcon } from '../base/icon';
 
@@ -12,6 +12,7 @@ type ValueType = string | number | (string | number)[];
 
 type ICascaderProps<DataNodeType extends BaseOptionType = any> = Omit<CascaderProps<DataNodeType>, 'onChange'> & IOptionsAPIProps & {
   onChange?: (value: ValueType, selectedOptions?: any[]) => void
+  ref?: ComponentProps<typeof AntCascader>['ref']
 };
 
 const CascaderFC: <DataNodeType extends BaseOptionType = any>(props: ICascaderProps<DataNodeType>) => ReactNode = observer((props: ICascaderProps) => {
@@ -70,7 +71,7 @@ const CascaderFC: <DataNodeType extends BaseOptionType = any>(props: ICascaderPr
       }
     />
   );
-});
+}, { forwardRef: true });
 
 type ICascaderPanelFC = FC<Omit<CascaderPanelProps, 'onChange'> & IOptionsAPIProps & {
   onChange?: (value: ValueType, selectedOptions?: any[]) => void
