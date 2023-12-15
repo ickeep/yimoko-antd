@@ -11,15 +11,7 @@ const BreadcrumbFC: IBreadcrumbFC = observer((props) => {
   const curSeparator = useAdditionalNode('separator', separator);
   const [data] = useAPIOptions(items ?? options, api, keys, splitter);
 
-  return <AntBreadcrumb  {...rest} items={data} separator={curSeparator} />;
+  return <AntBreadcrumb {...rest} items={data} separator={curSeparator} />;
 });
 
-type IBreadcrumb = IBreadcrumbFC & {
-  Item: typeof AntBreadcrumb.Item;
-  Separator: typeof AntBreadcrumb.Separator;
-};
-
-export const Breadcrumb = BreadcrumbFC as IBreadcrumb;
-
-Breadcrumb.Item = AntBreadcrumb.Item;
-Breadcrumb.Separator = AntBreadcrumb.Separator;
+export const Breadcrumb = Object.assign(BreadcrumbFC, AntBreadcrumb);

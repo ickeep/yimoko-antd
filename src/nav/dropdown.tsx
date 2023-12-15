@@ -13,14 +13,14 @@ const DropdownFC: IDropdownFC = observer((props: DropdownProps & Omit<IOptionsAP
   const { options, api, keys, splitter, menu, ...rest } = props;
   const [data] = useAPIOptions(menu?.items ?? options, api, keys, splitter) as unknown as [ItemType[]];
 
-  return <AntDropdown  {...rest} menu={{ ...menu, items: data }} />;
+  return <AntDropdown {...rest} menu={{ ...menu, items: data }} />;
 });
 
 const DButton = observer((props: DropdownButtonProps & Omit<IOptionsAPIProps<keyof ItemType>, 'valueType'>) => {
   const { options, api, keys, splitter, menu, icon, ...rest } = props;
   const [data] = useAPIOptions(menu?.items ?? options, api, keys, splitter) as unknown as [ItemType[]];
 
-  return <AntDropdown.Button  {...rest} menu={{ ...menu, items: data }} icon={getAutoIcon(icon)} />;
+  return <AntDropdown.Button {...rest} menu={{ ...menu, items: data }} icon={getAutoIcon(icon)} />;
 });
 
 type IDropdown = IDropdownFC & {

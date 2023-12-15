@@ -3,7 +3,7 @@ import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/
 import { judgeIsSuccess, useAPIExecutor, useConfig } from '@yimoko/store';
 import { Spin } from 'antd';
 import htmr from 'htmr';
-import { HTMLAttributes, ReactNode, useEffect, useMemo, useState } from 'react';
+import { HTMLAttributes, ReactNode, forwardRef, useEffect, useMemo, useState } from 'react';
 
 import { IConfig } from '../store/config';
 
@@ -15,7 +15,7 @@ export type IconProps = Partial<Omit<CustomIconComponentProps, 'component'>> & O
 const fetchMap: Record<string, Promise<string | null>> = {};
 const { icons = {} } = globalThis as any;
 
-export const Icon = (props: IconProps) => {
+export const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   const { name, value, ...args } = props;
   const http = useAPIExecutor();
   const [loading, setLoading] = useState(false);
@@ -40,11 +40,11 @@ export const Icon = (props: IconProps) => {
   }, [component, file, http, src]);
 
   if (component) {
-    return <TIcon component={component}  {...args} />;
+    return <TIcon component={component}  {...args} ref={ref} />;
   }
 
   return <Spin size='small' spinning={loading} />;
-};
+});
 
 export const getAutoIcon: <T = ReactNode>(name: T) => (T | ReactNode) = (name) => {
   if (typeof name === 'string' && name) {

@@ -14,7 +14,7 @@ export const SpaceDemo = () => (
 );
 const SpaceJSX = () => (
   <div>
-    <Space><Button>1</Button><Button>2</Button></Space>
+    <Space ><Button>1</Button><Button>2</Button></Space>
     <Divider />
     <Space.Compact block>
       <Input style={{ width: '20%' }} defaultValue="0571" />

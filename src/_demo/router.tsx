@@ -7,6 +7,7 @@ import { CheckboxDemo } from './in/checkbox';
 import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
+import { MenuDemo } from './nav/menu';
 
 
 export const ROUTES_CONF: Array<IRouteConf> = [
@@ -23,6 +24,11 @@ export const ROUTES_CONF: Array<IRouteConf> = [
       { path: 'flex', name: 'Flex', component: FlexDemo },
       { path: 'grid', name: 'Grid 栅格', component: GridDemo },
       { path: 'space', name: 'Space间距', component: SpaceDemo },
+    ],
+  },
+  {
+    path: '/nav/', name: '导航', children: [
+      { path: 'menu', name: 'Menu 导航菜单', component: MenuDemo },
     ],
   },
   {
