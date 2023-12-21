@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { useAPIOptions, useAPISearchOptions, strToArr, IOptionsAPISearchProps } from '@yimoko/store';
 import { Select as AntSelect, Spin, SelectProps as TSelectProps } from 'antd';
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 export type SelectProps = TSelectProps & IOptionsAPISearchProps;
 

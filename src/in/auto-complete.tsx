@@ -1,6 +1,6 @@
 import { useAdditionalNode } from '@yimoko/store';
 import { AutoComplete as AntAutoComplete, AutoCompleteProps } from 'antd';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { getAllowClear } from '../base/icon';
 

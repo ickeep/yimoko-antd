@@ -2,7 +2,7 @@ import { useAdditionalNode } from '@yimoko/store';
 import { FloatButton as AntFloatButton, FloatButtonProps } from 'antd';
 
 import { FloatButtonElement } from 'antd/lib/float-button/interface';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { getAutoIcon } from './icon';
 

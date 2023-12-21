@@ -1,6 +1,6 @@
 import { observer } from '@formily/react';
 import { RenderValue } from '@yimoko/store';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 import { CSSDeeps, JSDeep } from '../hook/use-load-depend';
 

@@ -2,7 +2,7 @@ import { observer } from '@formily/react';
 import { BoxContentProvider, IStore, useBoxStore, BoxContentRender, useBoxContent, useCurForm, judgeIsEmpty, Trigger, TriggerProps } from '@yimoko/store';
 import { Modal as AModal, ModalProps as AModalProps } from 'antd';
 import { ModalFunc } from 'antd/lib/modal/confirm';
-import { ReactElement, FC, Component, useMemo, useEffect, useRef } from 'react';
+import React, { ReactElement, FC, Component, useMemo, useEffect, useRef } from 'react';
 
 import { trigStoreRun } from '../out/run-trigger';
 

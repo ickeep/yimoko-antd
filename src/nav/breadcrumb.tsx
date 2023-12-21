@@ -2,7 +2,7 @@ import { observer } from '@formily/react';
 import { IOptionsAPIProps, useAPIOptions, useAdditionalNode } from '@yimoko/store';
 import { Breadcrumb as AntBreadcrumb, BreadcrumbProps } from 'antd';
 import { ItemType } from 'antd/lib/breadcrumb/Breadcrumb';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 type IBreadcrumbFC = FC<BreadcrumbProps & Omit<IOptionsAPIProps<keyof ItemType>, 'valueType'>>;
 

@@ -3,6 +3,7 @@ import { createSchemaField } from '@formily/react';
 import { ConfigStoreProvider, SchemaFieldProvider } from '@yimoko/store';
 import { ConfigProvider, Dropdown, FloatButton } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import { components, configStore } from '@/library';

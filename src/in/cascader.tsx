@@ -4,7 +4,7 @@ import { Cascader as AntCascader, CascaderProps } from 'antd';
 
 import { BaseOptionType } from 'antd/lib/cascader';
 import { CascaderPanelProps } from 'antd/lib/cascader/Panel';
-import { ComponentProps, FC, ReactNode, useMemo } from 'react';
+import React, { ComponentProps, FC, ReactNode, useMemo } from 'react';
 
 import { getAllowClear, getAutoIcon } from '../base/icon';
 

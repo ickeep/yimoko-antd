@@ -3,7 +3,7 @@ import { IOptionsAPIProps, useAPIOptions } from '@yimoko/store';
 import { Dropdown as AntDropdown, DropdownProps } from 'antd';
 import { DropdownButtonProps } from 'antd/es/dropdown';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { getAutoIcon } from '../base/icon';
 

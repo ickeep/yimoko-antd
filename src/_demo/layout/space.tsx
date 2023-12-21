@@ -1,5 +1,7 @@
 import { StorePage } from '@yimoko/store';
 
+import React from 'react';
+
 import { Button, Divider, Input, Space, Tabs } from '@/library';
 
 export const SpaceDemo = () => (

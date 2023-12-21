@@ -1,6 +1,6 @@
 import { observer } from '@formily/react';
 import { Tooltip as ATooltip, TooltipProps as ATooltipProps } from 'antd';
-import { isValidElement, useMemo } from 'react';
+import React, { isValidElement, useMemo } from 'react';
 
 import { Icon, IconProps } from '../base/icon';
 

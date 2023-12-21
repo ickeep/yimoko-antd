@@ -3,7 +3,7 @@ import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/
 import { judgeIsSuccess, useAPIExecutor, useConfig } from '@yimoko/store';
 import { Spin } from 'antd';
 import htmr from 'htmr';
-import { HTMLAttributes, ReactNode, forwardRef, useEffect, useMemo, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, forwardRef, useEffect, useMemo, useState } from 'react';
 
 import { IConfig } from '../store/config';
 

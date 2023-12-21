@@ -1,6 +1,6 @@
 import { observer } from '@formily/react';
 import { Tag, Space } from 'antd';
-import { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 
 export interface KeyToValProps {
   value?: string | number | Array<string | number>,

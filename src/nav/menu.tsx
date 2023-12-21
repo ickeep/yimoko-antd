@@ -3,7 +3,7 @@ import { IOptionsAPIProps, useAPIOptions, useAdditionalNode } from '@yimoko/stor
 import { Menu as AntMenu, MenuItemProps, SubMenuProps } from 'antd';
 import { MenuItemGroupProps } from 'antd/lib/menu';
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
-import { ComponentProps, FC } from 'react';
+import React, { ComponentProps, FC } from 'react';
 
 import { getAutoIcon } from '../base/icon';
 

@@ -1,6 +1,6 @@
 import { useAdditionalNode } from '@yimoko/store';
 import { InputNumber as AntInputNumber, InputNumberProps } from 'antd';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>((props, ref) => {
   const {

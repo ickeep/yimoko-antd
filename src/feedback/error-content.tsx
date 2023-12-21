@@ -2,7 +2,7 @@ import Icon from '@ant-design/icons';
 import { observer } from '@formily/react';
 import { IStoreResponse, judgeIsSuccess } from '@yimoko/store';
 import { Result, ResultProps, Button, Spin } from 'antd';
-import { FC, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 

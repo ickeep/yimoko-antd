@@ -1,4 +1,5 @@
 import { StorePage } from '@yimoko/store';
+import React from 'react';
 
 import { Button, Flex, Tabs } from '@/library';
 

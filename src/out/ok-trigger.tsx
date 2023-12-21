@@ -1,6 +1,7 @@
 import { observer } from '@formily/react';
 import { useBoxContent, Trigger, TriggerProps } from '@yimoko/store';
 import { Button, ButtonProps } from 'antd';
+import React from 'react';
 
 export interface OkTriggerProps extends ButtonProps {
   closeBox?: boolean

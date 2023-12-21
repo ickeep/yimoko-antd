@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { Tabs, Menu } from '@/library';
 
