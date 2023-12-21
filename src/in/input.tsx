@@ -2,7 +2,8 @@ import { useAdditionalNode } from '@yimoko/store';
 import { Input as AntInput, InputProps, InputRef } from 'antd';
 import { PasswordProps, SearchProps, TextAreaProps } from 'antd/lib/input';
 import { forwardRef } from 'react';
-import { getAllowClear } from 'src/base/icon';
+
+import { getAllowClear } from '../base/icon';
 
 const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
   const {
