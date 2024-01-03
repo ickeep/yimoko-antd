@@ -3,6 +3,7 @@ import { BoxContentProvider, BoxContentRender, IStore, useBoxContent, useBoxStor
 import { ButtonProps, Drawer as ADrawer, DrawerProps as ADrawerProps, Row, RowProps, Space } from 'antd';
 import React, { ReactElement, FC, Component, useMemo, ReactNode } from 'react';
 
+import { Button } from '../base/button';
 import { CancelTrigger } from '../out/cancel-trigger';
 import { OkTrigger } from '../out/ok-trigger';
 import { RunTrigger } from '../out/run-trigger';
@@ -37,7 +38,7 @@ export const Drawer = observer((props: DrawerProps) => {
 
   return (
     <BoxContentProvider value={boxStore}>
-      <Trigger children={title} {...trigger} onTrig={openUp} />
+      <Trigger component={Button} children={title} {...trigger} onTrig={openUp} />
       {isOpen !== undefined && (
         <DrawerRender {...args} open={isOpen} onClose={close} />
       )}

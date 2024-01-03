@@ -4,6 +4,7 @@ import { Modal as AModal, ModalProps as AModalProps } from 'antd';
 import { ModalFunc } from 'antd/lib/modal/confirm';
 import React, { ReactElement, FC, Component, useMemo, useEffect, useRef } from 'react';
 
+import { Button } from '../base/button';
 import { trigStoreRun } from '../out/run-trigger';
 
 interface IContentProps {
@@ -34,7 +35,7 @@ export const Modal = observer((props: ModalProps) => {
 
   return (
     <BoxContentProvider value={boxStore}>
-      <Trigger children={title} {...trigger} onTrig={openUp} />
+      <Trigger component={Button} children={title} {...trigger} onTrig={openUp} />
       {isOpen !== undefined && <ModalRender {...args} open={isOpen} />}
     </BoxContentProvider>
   );
