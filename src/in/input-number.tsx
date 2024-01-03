@@ -3,11 +3,7 @@ import { InputNumber as AntInputNumber, InputNumberProps } from 'antd';
 import React, { forwardRef } from 'react';
 
 export const InputNumber = forwardRef<HTMLInputElement, InputNumberProps>((props, ref) => {
-  const {
-    onChange,
-    prefix, suffix, addonBefore, addonAfter,
-    ...rest
-  } = props;
+  const { prefix, suffix, addonBefore, addonAfter, ...rest } = props;
 
   const curPrefix = useAdditionalNode('prefix', prefix);
   const curSuffix = useAdditionalNode('suffix', suffix);
