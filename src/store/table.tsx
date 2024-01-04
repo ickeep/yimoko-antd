@@ -10,7 +10,7 @@ import { get } from 'lodash-es';
 import React, { FC, Key, ReactNode, isValidElement, useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Table, TableProps, schemaToColumns } from '../out/table';
+import { DataIndex, Table, TableProps, dataIndexToKey, schemaToColumns } from '../out/table';
 import { Tooltip, TooltipProps } from '../out/tooltip';
 
 export type StoreTableProps<T = any> = Omit<TableProps<T>, 'loading' | 'value' | 'dataSource' | 'columns'> & {
@@ -297,8 +297,6 @@ const getTitle = (field: string | number = '', column: IColumn<any> = {}, fields
 };
 
 
-export const dataIndexToKey = (dataIndex?: DataIndex) => (Array.isArray(dataIndex) ? dataIndex.join('.') : dataIndex) as string | number;
-
 const mergeColumnsConfig = (columns: Array<string | IColumn<any>>, fieldsConfig?: IFieldsConfig, fieldSchema?: ISchema, tipIcon?: TooltipProps['icon']) => {
   // eslint-disable-next-line complexity
   const handleItem = (item: string | IColumn<any>) => {
@@ -426,4 +424,3 @@ export type IColumns<T extends object = Record<any, any>> = IColumn<T>[];
 
 export type IAutoFilterConfig = Pick<IColumnType, 'isFilterContains' | 'filterSplitter' | 'autoFilter'> & { 'dataIndex': DataIndex };
 
-export type DataIndex = string | number | readonly (string | number)[];

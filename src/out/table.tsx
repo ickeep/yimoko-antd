@@ -1,9 +1,9 @@
-import { RecordScope, RecordsScope, RecursionField, Schema, observer, useField, useFieldSchema } from '@formily/react';
-import { ArrayBase, getItemPropsBySchema, judgeIsEmpty, useChildrenNullishCoalescing } from '@yimoko/store';
+import { createForm } from '@formily/core';
+import { RecordScope, RecordsScope, Schema, observer, useField, useFieldSchema } from '@formily/react';
+import { ArrayBase, SchemaBox, getItemPropsBySchema, judgeIsEmpty, useChildrenNullishCoalescing, useSchemaField } from '@yimoko/store';
 import { Table as AntTable, TableProps as AntTableProps } from 'antd';
 import { ColumnType as AntColumnType } from 'antd/lib/table';
 import React, { FC, useCallback, useMemo } from 'react';
-
 
 export type TableProps<T = any> = Omit<AntTableProps<T>, 'onChange' | 'columns'> & {
   value?: AntTableProps<T>['dataSource'],
@@ -20,6 +20,7 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
   const { items } = fieldSchema ?? {};
   const curDataSource = (dataSource ?? value) as any[];
   const curChildren = useChildrenNullishCoalescing(children);
+  const SchemaField = useSchemaField();
 
   // 解决默认 rowKey 各 低代码时取 实际数据 index 的问题
   const getRecordIndex = useCallback(() => {
@@ -43,12 +44,19 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
       const newCol = { ...rest };
       if ('children' in newCol) {
         newCol.children = newCol.children.map(handleSchema);
-      } else if (fieldSchema && schema && !col.render) {
-        newCol.render = (v: any, r: any, i: number) => (
-          <RecordScope getRecord={() => r ?? {}} getIndex={() => i}>
-            <RecursionField schema={schema} />
-          </RecordScope>
-        );
+      } else if ('dataIndex' in col && fieldSchema && schema && !col.render) {
+        newCol.render = (v: any, r: any) => {
+          const i = getRecordIndex(r);
+          const key = dataIndexToKey(col.dataIndex);
+          return (
+            <RecordScope getRecord={() => r ?? {}} getIndex={() => i}>
+              {/* @ts-ignore */}
+              <SchemaBox model={createForm({ values: { ...r, [key]: v } })} >
+                <SchemaField schema={{ type: 'object', properties: { [key]: schema } }} />
+              </SchemaBox>
+            </RecordScope>
+          );
+        };
       }
       return newCol;
     };
@@ -61,7 +69,7 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
     }
 
     return newColumns;
-  }, [columns, fieldSchema, getRecordIndex, isSchemaToColumns, items]);
+  }, [SchemaField, columns, fieldSchema, getRecordIndex, isSchemaToColumns, items]);
 
   const curScroll = useTableScroll(scroll, curColumns, defaultColumnsWidth);
 
@@ -138,3 +146,8 @@ export interface ColumnGroupType<RecordType> extends Omit<ColumnType<RecordType>
   children: ColumnsType<RecordType>;
 }
 export type ColumnsType<RecordType = unknown> = (ColumnGroupType<RecordType> | ColumnType<RecordType>)[];
+
+
+export const dataIndexToKey = (dataIndex?: DataIndex) => (Array.isArray(dataIndex) ? dataIndex.join('.') : dataIndex) as string | number;
+
+export type DataIndex = string | number | readonly (string | number)[];

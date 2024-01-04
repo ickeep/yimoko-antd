@@ -60,6 +60,7 @@ import { CancelTrigger } from './out/cancel-trigger';
 import { Card } from './out/card';
 import { Carousel } from './out/carousel';
 import { Collapse } from './out/collapse';
+import { DateDisplay } from './out/date-display';
 import { Descriptions } from './out/descriptions';
 import { Empty } from './out/empty';
 import { Image } from './out/image';
@@ -159,6 +160,7 @@ export const components: Record<string, ComponentType<any>> = {
   Card,
   Carousel,
   Collapse,
+  DateDisplay,
   Descriptions,
   Empty,
   Image,

@@ -1,6 +1,6 @@
 {
   "name": "@yimoko/antd",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "ickeep <i@ickeep.com>",
   "private": false,
   "license": "MIT",
@@ -28,7 +28,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@formily/react": "^2.3.0",
+    "@formily/core": "^2.3.1",
+    "@formily/react": "^2.3.1",
     "@formily/reactive": "^2.3.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
