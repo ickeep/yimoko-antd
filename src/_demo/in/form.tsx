@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 import { Form as AntForm, Input } from 'antd';
-import { useRef } from 'react';
+import React from 'react';
 
 import { Tabs } from '@/library';
 
@@ -14,26 +14,17 @@ export const FormDemo = () => (
   </div>
 );
 
-const FormJSX = observer(() => {
-  const store = useStore({ defaultValues: { c: '1' } });
-  const { values, setValues } = store;
-  const { c } = values;
-  const ref = useRef(null);
-  const gRef = useRef(null);
-
-
-  return <>
-    <AntForm>
-      <AntForm.Item
-        label="Username"
-        name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
-      >
-        <Input />
-      </AntForm.Item>
-    </AntForm>
-  </>;
-});
+const FormJSX = observer(() => <>
+  <AntForm>
+    <AntForm.Item
+      label="Username"
+      name="username"
+      rules={[{ required: true, message: 'Please input your username!' }]}
+    >
+      <Input />
+    </AntForm.Item>
+  </AntForm>
+</>);
 
 const FormSchema = observer(() => {
   const store = useStore({ defaultValues: { v: '1' } });

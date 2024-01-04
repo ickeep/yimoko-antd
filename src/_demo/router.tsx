@@ -12,6 +12,7 @@ import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
 import { MenuDemo } from './nav/menu';
+import { StoreTableDemo } from './store/table';
 
 
 export const ROUTES_CONF: Array<IRouteConf> = [
@@ -41,6 +42,11 @@ export const ROUTES_CONF: Array<IRouteConf> = [
       { path: 'colorPicker', name: 'ColorPicker 颜色选择器', component: ColorPickerDemo },
       { path: 'datePicker', name: 'DatePicker 日期选择器', component: DatePickerDemo },
       { path: 'form', name: 'Form 表单', component: FormDemo },
+    ],
+  },
+  {
+    path: '/store/', name: 'store', children: [
+      { path: 'table', name: 'StoreTable store 表格', component: StoreTableDemo },
     ],
   },
 ];

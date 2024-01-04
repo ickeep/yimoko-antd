@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "@formily/react": "^2.3.0",
+    "@formily/reactive": "^2.3.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -40,6 +41,7 @@
     "antd": "^5.12.1",
     "dayjs": "^1.11.10",
     "htmr": "^1.0.2",
+    "lodash-es": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "6.3.0",

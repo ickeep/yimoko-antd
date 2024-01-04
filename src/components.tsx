@@ -79,6 +79,7 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+import { StoreTable } from './store/table';
 
 export const components: Record<string, ComponentType<any>> = {
   // base
@@ -177,4 +178,8 @@ export const components: Record<string, ComponentType<any>> = {
   Tooltip,
   Tour,
   Tree,
+
+  // store
+
+  StoreTable,
 };
