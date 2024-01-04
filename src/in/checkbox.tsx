@@ -3,7 +3,7 @@ import { IOptionsAPIProps, strToArr, useAPIOptions } from '@yimoko/store';
 import { Checkbox as AntCheckbox, CheckboxProps as AntCheckboxProps, CheckboxRef } from 'antd';
 import { CheckboxChangeEvent, CheckboxOptionType } from 'antd/lib/checkbox';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';
-import { ComponentProps, forwardRef, useMemo } from 'react';
+import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 export interface CheckboxProps extends Omit<AntCheckboxProps, 'onChange'> {
   values?: { true: any, false: any }

@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { BoxContentProvider, BoxContentRender, IStore, useBoxContent, useBoxStore, Trigger, TriggerProps } from '@yimoko/store';
 import { ButtonProps, Drawer as ADrawer, DrawerProps as ADrawerProps, Row, RowProps, Space } from 'antd';
-import { ReactElement, FC, Component, useMemo, ReactNode } from 'react';
+import React, { ReactElement, FC, Component, useMemo, ReactNode } from 'react';
 
 import { CancelTrigger } from '../out/cancel-trigger';
 import { OkTrigger } from '../out/ok-trigger';

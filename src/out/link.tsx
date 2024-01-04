@@ -2,7 +2,7 @@ import { observer } from '@formily/react';
 import { judgeIsEmpty } from '@yimoko/store';
 import { Typography } from 'antd';
 import { LinkProps as ALinkProps } from 'antd/lib/typography/Link';
-import { forwardRef, useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import { LinkProps as RLinkProps, useHref, useLinkClickHandler } from 'react-router-dom';
 
 const { Link: ALink } = Typography;

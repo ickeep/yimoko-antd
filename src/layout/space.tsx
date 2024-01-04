@@ -1,6 +1,6 @@
 import { useAdditionalNode } from '@yimoko/store';
 import { Space as AntSpace, SpaceProps } from 'antd';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 const SpaceFC = forwardRef<HTMLDivElement, SpaceProps>((props, ref) => {
   const { split, ...rest } = props;

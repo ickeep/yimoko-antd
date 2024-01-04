@@ -2,6 +2,8 @@ import { observer } from '@formily/react';
 import { StorePage, useStore } from '@yimoko/store';
 import { ColorPicker as AntColorPicker } from 'antd';
 
+import React from 'react';
+
 import { Tabs, ColorPicker } from '@/library';
 
 

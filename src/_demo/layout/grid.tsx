@@ -1,5 +1,7 @@
 import { StorePage } from '@yimoko/store';
 
+import React from 'react';
+
 import { Col, Row, Tabs } from '@/library';
 
 export const GridDemo = () => (

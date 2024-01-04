@@ -2,6 +2,8 @@ import { observer } from '@formily/react';
 import { judgeIsEmpty, RenderValue } from '@yimoko/store';
 import { Alert, AlertProps, Space, Spin, SpinProps, Typography } from 'antd';
 
+import React from 'react';
+
 import { CSSDeeps, JSDeep, useLoadDepend } from '../hook/use-load-depend';
 
 import { Icon } from './icon';

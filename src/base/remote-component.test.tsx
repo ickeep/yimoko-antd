@@ -2,6 +2,8 @@
 /* eslint-disable testing-library/no-node-access */
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react';
 
+import React from 'react';
+
 import { RemoteComponent } from './remote-component';
 
 describe('LoadDepend', () => {

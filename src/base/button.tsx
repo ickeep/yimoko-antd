@@ -1,5 +1,5 @@
 import { Button as AntButton, ButtonProps } from 'antd';
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 
 import { getAutoIcon } from './icon';
 
