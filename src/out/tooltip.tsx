@@ -14,7 +14,6 @@ const dfIcon = 'QuestionCircleOutlined';
 export const Tooltip = observer((props: TooltipProps) => {
   const { icon = dfIcon, value, children, ...args } = props;
 
-  // eslint-disable-next-line complexity
   const curChildren = useMemo(() => {
     const node = children || value;
     if (node) {
