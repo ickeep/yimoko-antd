@@ -4,7 +4,7 @@ import { PasswordProps, SearchProps, TextAreaProps } from 'antd/lib/input';
 import { forwardRef } from 'react';
 import { getAllowClear } from 'src/base/icon';
 
-const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
+const InputFC = forwardRef<InputRef, Omit<InputProps, 'onChange'> & { onChange?: (value: string, e: React.ChangeEvent<HTMLInputElement>) => void }>((props, ref) => {
   const {
     onChange,
     prefix, suffix, addonBefore, addonAfter, allowClear,
