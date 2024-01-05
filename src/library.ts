@@ -86,6 +86,7 @@ export * from './out/tour';
 export * from './out/tree';
 
 export * from './store/config';
+export * from './store/desc';
 export * from './store/table';
 
 export * from './components';

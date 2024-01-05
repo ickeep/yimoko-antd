@@ -12,6 +12,7 @@ import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
 import { MenuDemo } from './nav/menu';
+import { StoreDescDemo } from './store/desc';
 import { StoreTableDemo } from './store/table';
 
 
@@ -46,6 +47,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
   },
   {
     path: '/store/', name: 'store', children: [
+      { path: 'desc', name: 'StoreTable desc 描述', component: StoreDescDemo },
       { path: 'table', name: 'StoreTable store 表格', component: StoreTableDemo },
     ],
   },

@@ -80,6 +80,7 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+import { StoreDesc } from './store/desc';
 import { StoreTable } from './store/table';
 
 export const components: Record<string, ComponentType<any>> = {
@@ -182,6 +183,6 @@ export const components: Record<string, ComponentType<any>> = {
   Tree,
 
   // store
-
+  StoreDesc,
   StoreTable,
 };

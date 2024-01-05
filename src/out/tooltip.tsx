@@ -1,3 +1,4 @@
+import { QuestionCircleOutlined } from '@ant-design/icons';
 import { observer } from '@formily/react';
 import { Tooltip as ATooltip, TooltipProps as ATooltipProps } from 'antd';
 import React, { isValidElement, useMemo } from 'react';
@@ -9,10 +10,8 @@ export type TooltipProps = ATooltipProps & {
   icon?: string | React.ReactNode | IconProps
 };
 
-const dfIcon = 'QuestionCircleOutlined';
-
 export const Tooltip = observer((props: TooltipProps) => {
-  const { icon = dfIcon, value, children, ...args } = props;
+  const { icon = <QuestionCircleOutlined />, value, children, ...args } = props;
 
   const curChildren = useMemo(() => {
     const node = children || value;
@@ -26,7 +25,7 @@ export const Tooltip = observer((props: TooltipProps) => {
       return icon;
     }
     if (typeof icon === 'object') {
-      return <Icon name={dfIcon} {...icon} />;
+      return <Icon name={'QuestionCircleOutlined'} {...icon} />;
     }
   }, [children, icon, value]);
 
