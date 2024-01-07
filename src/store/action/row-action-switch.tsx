@@ -8,7 +8,7 @@ import { RowAction, RowActionProps } from './row-action';
 
 // eslint-disable-next-line complexity
 export const RowActionSwitch = observer((props: Partial<RowActionProps>) => {
-  const { store, ...args } = props;
+  const { store, children, ...args } = props;
   const scope = useExpressionScope();
   const { $config = {}, $record = {} } = scope;
   const { keys } = props;
@@ -28,11 +28,10 @@ export const RowActionSwitch = observer((props: Partial<RowActionProps>) => {
         type="primary"
         ghost
         danger
-        children="禁用"
         confirm={{ content: `确定要禁用 ${get(useRecord, labelKey) ?? ''} 吗？` }}
         {...args}
         store={{ defaultValues: { [idKey]: '' }, api: $config?.api?.disableOne, ...store }}
-      />
+      >{children ?? '禁用'}</RowAction>
     );
   }
 
@@ -40,10 +39,9 @@ export const RowActionSwitch = observer((props: Partial<RowActionProps>) => {
     <RowAction
       type="primary"
       ghost
-      children="启用"
       confirm={{ content: `确定要启用 ${get(useRecord, labelKey) ?? ''} 吗？` }}
       {...args}
       store={{ defaultValues: { [idKey]: '' }, api: $config?.api?.enableOne, ...store }}
-    />
+    >{children ?? '启用'}</RowAction>
   );
 });

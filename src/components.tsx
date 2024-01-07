@@ -84,7 +84,7 @@ import { RowAction } from './store/action/row-action';
 import { RowActionDel } from './store/action/row-action-del';
 import { RowActionSwitch } from './store/action/row-action-switch';
 import { StoreDesc } from './store/desc';
-import { StoreForm } from './store/form';
+import { FormItem, StoreForm } from './store/form';
 import { ListBarForm } from './store/list-bar-form';
 import { PageBarHeader } from './store/page-bar-header';
 import { Reset } from './store/reset';
@@ -123,6 +123,7 @@ export const components: Record<string, ComponentType<any>> = {
   ColorPicker,
   DatePicker,
   Form,
+  FormItem,
   Input,
   InputNumber,
   Mentions,
