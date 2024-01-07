@@ -85,6 +85,10 @@ export * from './out/tooltip';
 export * from './out/tour';
 export * from './out/tree';
 
+
+export * from './store/action/row-action';
+export * from './store/action/row-action-del';
+export * from './store/action/row-action-switch';
 export * from './store/config';
 export * from './store/desc';
 export * from './store/form';

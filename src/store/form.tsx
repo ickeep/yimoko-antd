@@ -5,7 +5,8 @@ import { Col, ColProps, FormItemProps as AntFormItemProps, FormProps, Row } from
 import { RowProps } from 'antd/lib';
 import React, { ReactNode, createContext, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Form } from 'src/in/form';
+
+import { Form } from '../in/form';
 
 
 // 创建一个 from 的上下文 用来记录布局信息

@@ -80,6 +80,9 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+import { RowAction } from './store/action/row-action';
+import { RowActionDel } from './store/action/row-action-del';
+import { RowActionSwitch } from './store/action/row-action-switch';
 import { StoreDesc } from './store/desc';
 import { StoreForm } from './store/form';
 import { ListBarForm } from './store/list-bar-form';
@@ -192,6 +195,10 @@ export const components: Record<string, ComponentType<any>> = {
   StoreTable,
 
   ListBarForm,
+
+  RowActionDel,
+  RowActionSwitch,
+  RowAction,
 
   Reset,
   Submit,
