@@ -93,6 +93,7 @@ export * from './store/config';
 export * from './store/desc';
 export * from './store/form';
 export * from './store/list-bar-form';
+export * from './store/page-bar-header';
 export * from './store/reset';
 export * from './store/submit';
 export * from './store/table';

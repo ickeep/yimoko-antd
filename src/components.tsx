@@ -86,6 +86,7 @@ import { RowActionSwitch } from './store/action/row-action-switch';
 import { StoreDesc } from './store/desc';
 import { StoreForm } from './store/form';
 import { ListBarForm } from './store/list-bar-form';
+import { PageBarHeader } from './store/page-bar-header';
 import { Reset } from './store/reset';
 import { Submit } from './store/submit';
 import { StoreTable } from './store/table';
@@ -195,6 +196,7 @@ export const components: Record<string, ComponentType<any>> = {
   StoreTable,
 
   ListBarForm,
+  PageBarHeader,
 
   RowActionDel,
   RowActionSwitch,
