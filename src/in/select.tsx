@@ -45,6 +45,7 @@ export const Select = observer((props: SelectProps) => {
       options={data}
       {...searchProps}
       {...args}
+      {...newProps}
       mode={mode}
       onChange={(val, options) => {
         onChange?.(valueType === 'string' && Array.isArray(val) ? val.join(splitter) : val, options);
