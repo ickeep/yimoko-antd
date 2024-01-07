@@ -1,7 +1,7 @@
 import { Field } from '@formily/core';
 import { useFieldSchema, RecursionField, observer, useForm, useField } from '@formily/react';
 import { IStore, ListStore, judgeIsEmpty, useAdditionalNode, useCurStore } from '@yimoko/store';
-import { Col, ColProps, FormItemProps, FormProps, Row } from 'antd';
+import { Col, ColProps, FormItemProps as AntFormItemProps, FormProps, Row } from 'antd';
 import { RowProps } from 'antd/lib';
 import React, { ReactNode, createContext, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -42,8 +42,9 @@ export const StoreForm = observer((props: StoreFormProps) => {
   );
 });
 
+export type FormItemProps = AntFormItemProps & Pick<FormLayoutProps, 'col'>;
 // eslint-disable-next-line complexity
-export const FormItem = observer((props: FormItemProps & Pick<FormLayoutProps, 'col'>) => {
+export const FormItem = observer((props: FormItemProps) => {
   const { required, label, help, validateStatus, extra, col, ...args } = props;
   const field = (useField() ?? {}) as Field;
   const curRequired = required ?? field?.required;
@@ -103,7 +104,7 @@ export interface StoreFormFieldsProps {
 
 export interface IStoreFormField {
   field: string,
-  'formItem'?: React.PropsWithChildren<FormItemProps>
+  'formItem'?: FormItemProps
   [key: string]: any
 }
 

@@ -82,6 +82,7 @@ import { Tour } from './out/tour';
 import { Tree } from './out/tree';
 import { StoreDesc } from './store/desc';
 import { StoreForm } from './store/form';
+import { ListBarForm } from './store/list-bar-form';
 import { Reset } from './store/reset';
 import { Submit } from './store/submit';
 import { StoreTable } from './store/table';
@@ -189,6 +190,8 @@ export const components: Record<string, ComponentType<any>> = {
   StoreDesc,
   StoreForm,
   StoreTable,
+
+  ListBarForm,
 
   Reset,
   Submit,
