@@ -61,7 +61,7 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
       return newCol;
     };
     const newColumns = columns.map(handleSchema);
-    if (!judgeIsEmpty(items) && !isSchemaToColumns) {
+    if (!judgeIsEmpty(items) && isSchemaToColumns) {
       const itemArr = Array.isArray(items) ? items : [items];
       itemArr.forEach((item) => {
         newColumns.push(...schemaToColumns(item, getRecordIndex));
