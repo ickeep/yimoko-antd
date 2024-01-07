@@ -12,6 +12,7 @@ import { FlexDemo } from './layout/flex';
 import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
 import { MenuDemo } from './nav/menu';
+import { TreeDemo } from './out/tree';
 import { StoreDescDemo } from './store/desc';
 import { StoreTableDemo } from './store/table';
 
@@ -43,6 +44,11 @@ export const ROUTES_CONF: Array<IRouteConf> = [
       { path: 'colorPicker', name: 'ColorPicker 颜色选择器', component: ColorPickerDemo },
       { path: 'datePicker', name: 'DatePicker 日期选择器', component: DatePickerDemo },
       { path: 'form', name: 'Form 表单', component: FormDemo },
+    ],
+  },
+  {
+    path: '/out/', name: '数据展示', children: [
+      { path: 'tree', name: 'tree 树', component: TreeDemo },
     ],
   },
   {

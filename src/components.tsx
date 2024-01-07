@@ -81,6 +81,9 @@ import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
 import { StoreDesc } from './store/desc';
+import { StoreForm } from './store/form';
+import { Reset } from './store/reset';
+import { Submit } from './store/submit';
 import { StoreTable } from './store/table';
 
 export const components: Record<string, ComponentType<any>> = {
@@ -184,5 +187,9 @@ export const components: Record<string, ComponentType<any>> = {
 
   // store
   StoreDesc,
+  StoreForm,
   StoreTable,
+
+  Reset,
+  Submit,
 };
