@@ -36,8 +36,8 @@ dependencies:
     specifier: ^18.2.17
     version: 18.2.17
   '@yimoko/store':
-    specifier: ^2.0.16
-    version: 2.0.16(@testing-library/dom@9.3.3)(@types/react-dom@18.2.17)(@types/react@18.2.42)(typescript@4.9.5)
+    specifier: ^2.0.18
+    version: 2.0.18(@testing-library/dom@9.3.3)(@types/react-dom@18.2.17)(@types/react@18.2.42)(typescript@4.9.5)
   antd:
     specifier: ^5.12.1
     version: 5.12.1(react-dom@18.2.0)(react@18.2.0)
@@ -3485,8 +3485,8 @@ packages:
   /@xtuc/long@4.2.2:
     resolution: {integrity: sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==}
 
-  /@yimoko/store@2.0.16(@testing-library/dom@9.3.3)(@types/react-dom@18.2.17)(@types/react@18.2.42)(typescript@4.9.5):
-    resolution: {integrity: sha512-sAMUJjpNxwoR0fdhh04pxrpmd9/IKagVlQ+9Qh6xYb3Mlzry4zoVs687HB9Ih5+5FhlorCy+EoIWMzb4xOyX1g==}
+  /@yimoko/store@2.0.18(@testing-library/dom@9.3.3)(@types/react-dom@18.2.17)(@types/react@18.2.42)(typescript@4.9.5):
+    resolution: {integrity: sha512-DMDwoANRffRoRbgIutxGNA66xcULncCYJkjxmlU6pHcOepmJwdzUErA6H1y1DYXVsJ9O7JDgY5wozMEFRy3X/Q==}
     dependencies:
       '@formily/core': 2.3.1
       '@formily/react': 2.3.1(@types/react-dom@18.2.17)(@types/react@18.2.42)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(typescript@4.9.5)
