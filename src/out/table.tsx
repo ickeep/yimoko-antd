@@ -77,6 +77,7 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
     <RecordsScope getRecords={() => curDataSource}>
       <ArrayBase disabled={field?.disabled} isForceUpdate={true}  >
         <AntTable<any>
+          size='small'
           {...rest}
           dataSource={curDataSource}
           columns={curColumns}
