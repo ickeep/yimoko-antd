@@ -85,7 +85,6 @@ export * from './out/tooltip';
 export * from './out/tour';
 export * from './out/tree';
 
-
 export * from './store/action/row-action';
 export * from './store/action/row-action-del';
 export * from './store/action/row-action-switch';
@@ -97,5 +96,7 @@ export * from './store/page-bar-header';
 export * from './store/reset';
 export * from './store/submit';
 export * from './store/table';
+
+export * from './pro/json-editor';
 
 export * from './components';

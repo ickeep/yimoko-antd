@@ -80,6 +80,7 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+import { JSONEditor } from './pro/json-editor';
 import { RowAction } from './store/action/row-action';
 import { RowActionDel } from './store/action/row-action-del';
 import { RowActionSwitch } from './store/action/row-action-switch';
@@ -205,4 +206,7 @@ export const components: Record<string, ComponentType<any>> = {
 
   Reset,
   Submit,
+
+  // pro
+  JSONEditor,
 };

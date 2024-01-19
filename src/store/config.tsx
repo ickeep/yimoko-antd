@@ -1,4 +1,4 @@
-import { ConfigStore, IVersion, httpRequest } from '@yimoko/store';
+import { ConfigStore, IVersion, httpRequest, useConfig as useConfigOld } from '@yimoko/store';
 
 import { LoadDependProps } from '../base/load-depend';
 import { components } from '../components';
@@ -29,6 +29,8 @@ export const configStore: ConfigStore<typeof defaultConfig> = new ConfigStore(
   defaultConfig,
   { components, notifier, apiExecutor: httpRequest, useRouter },
 );
+
+export const useConfig = () => useConfigOld<IConfig>();
 
 export const { logger } = configStore;
 

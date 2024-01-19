@@ -34,6 +34,7 @@ export default defineConfig({
         '@formily/react',
         '@formily/reactive-react',
         '@yimoko/store',
+        "jsoneditor",
       ],
       output: {
         globals: {
@@ -51,6 +52,7 @@ export default defineConfig({
           '@formily/react': 'Formily.React',
           '@formily/reactive': 'Formily.Reactive',
           '@yimoko/store': 'YimokoStore',
+          jsoneditor: 'JSONEditor',
         },
       },
     },
