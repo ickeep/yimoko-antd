@@ -38,6 +38,8 @@
     "@types/node": "^16.18.67",
     "@types/react": "^18.2.42",
     "@types/react-dom": "^18.2.17",
+    "@wangeditor/editor": "^5.1.23",
+    "@wangeditor/editor-for-react": "^1.0.6",
     "@yimoko/store": "^2.0.18",
     "antd": "^5.12.1",
     "dayjs": "^1.11.10",

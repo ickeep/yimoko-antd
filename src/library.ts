@@ -67,6 +67,7 @@ export * from './out/collapse';
 export * from './out/date-display';
 export * from './out/descriptions';
 export * from './out/empty';
+export * from './out/html-content';
 export * from './out/image';
 export * from './out/key-to-val';
 export * from './out/link';

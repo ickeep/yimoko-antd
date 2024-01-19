@@ -63,6 +63,7 @@ import { Collapse } from './out/collapse';
 import { DateDisplay } from './out/date-display';
 import { Descriptions } from './out/descriptions';
 import { Empty } from './out/empty';
+import { HTMLContent } from './out/html-content';
 import { Image } from './out/image';
 import { KeyToVal } from './out/key-to-val';
 import { Link } from './out/link';
@@ -174,6 +175,7 @@ export const components: Record<string, ComponentType<any>> = {
   DateDisplay,
   Descriptions,
   Empty,
+  HTMLContent,
   Image,
   List,
   KeyToVal,
