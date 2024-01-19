@@ -6,7 +6,6 @@ import React from 'react';
 
 import { Tabs, ColorPicker } from '@/library';
 
-
 export const ColorPickerDemo = () => (
   <div>
     <Tabs defaultActiveKey="schema" items={[

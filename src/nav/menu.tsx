@@ -12,14 +12,13 @@ export type IMenuFC = FC<ComponentProps<typeof AntMenu> & Omit<IOptionsAPIProps<
 const MenuFC: IMenuFC = observer((props) => {
   const { options, api, keys, splitter, items, expandIcon, overflowedIndicator, ...rest } = props;
   const [data] = useAPIOptions(items ?? options, api, keys, splitter) as unknown as [ItemType[]];
-  // @ts-ignore
   const curExpandIcon = useAdditionalNode('expandIcon', expandIcon);
   const curOverflowedIndicator = useAdditionalNode('overflowedIndicator', overflowedIndicator);
 
   return <AntMenu {...rest} items={data} expandIcon={curExpandIcon} overflowedIndicator={curOverflowedIndicator} />;
 }, { forwardRef: true });
 
-export const Menu = Object.assign(MenuFC, AntMenu);
+export const Menu = Object.assign(MenuFC, AntMenu) as MenuComponent;
 
 const Item = (props: MenuItemProps) => {
   const { icon, title, ...rest } = props;
@@ -47,3 +46,10 @@ const ItemGroup = (props: MenuItemGroupProps) => {
 };
 
 Menu.ItemGroup = ItemGroup;
+
+type MenuComponent = React.ForwardRefExoticComponent<ComponentProps<typeof AntMenu> & Omit<IOptionsAPIProps<keyof ItemType>, 'valueType'>> & {
+  Item: typeof Item;
+  SubMenu: typeof SubMenu;
+  Divider: typeof AntMenu.Divider;
+  ItemGroup: typeof ItemGroup;
+};

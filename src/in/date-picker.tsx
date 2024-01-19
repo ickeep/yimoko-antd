@@ -191,6 +191,7 @@ const valueToDayjsRange = (
   return arr;
 };
 
+
 export const DatePicker = Object.assign(DatePickerFC, {
   RangePicker,
   WeekPicker: AntDatePicker.WeekPicker,
@@ -198,4 +199,14 @@ export const DatePicker = Object.assign(DatePickerFC, {
   QuarterPicker: AntDatePicker.QuarterPicker,
   YearPicker: AntDatePicker.YearPicker,
   TimePicker: AntDatePicker.TimePicker,
-});
+}) as DatePickerC;
+
+
+type DatePickerC = typeof DatePickerFC & {
+  RangePicker: typeof RangePicker;
+  WeekPicker: typeof AntDatePicker.WeekPicker;
+  MonthPicker: typeof AntDatePicker.MonthPicker;
+  QuarterPicker: typeof AntDatePicker.QuarterPicker;
+  YearPicker: typeof AntDatePicker.YearPicker;
+  TimePicker: typeof AntDatePicker.TimePicker;
+};

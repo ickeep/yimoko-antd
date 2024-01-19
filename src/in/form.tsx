@@ -1,3 +1,3 @@
 import { Form as AntForm } from 'antd';
 
-export const Form = AntForm;
+export const Form: typeof AntForm = AntForm;

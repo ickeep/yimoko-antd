@@ -1,3 +1,3 @@
 import { Slider as AntSlider } from 'antd';
 
-export const Slider = AntSlider;
+export const Slider: typeof AntSlider = AntSlider;
