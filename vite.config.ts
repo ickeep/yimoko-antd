@@ -43,7 +43,7 @@ export default defineConfig({
           'react-router-dom': 'ReactRouterDOM',
           axios: 'axios',
           antd: 'antd',
-          '@ant-design/icons': 'antdIcons',
+          '@ant-design/icons': 'icons',
           classnames: 'classNames',
           'lodash-es': '_',
           '@formily/core': 'Formily.Core',

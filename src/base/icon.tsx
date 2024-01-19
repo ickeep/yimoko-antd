@@ -1,6 +1,6 @@
 import TIcon from '@ant-design/icons';
 import type { CustomIconComponentProps } from '@ant-design/icons/lib/components/Icon';
-import { judgeIsSuccess, useAPIExecutor, useConfig } from '@yimoko/store';
+import { RenderValue, judgeIsSuccess, useAPIExecutor, useConfig } from '@yimoko/store';
 import { Spin } from 'antd';
 import htmr from 'htmr';
 import React, { HTMLAttributes, ReactNode, forwardRef, useEffect, useMemo, useState } from 'react';
@@ -40,7 +40,7 @@ export const Icon = forwardRef<HTMLSpanElement, IconProps>((props, ref) => {
   }, [component, file, http, src]);
 
   if (component) {
-    return <TIcon component={component}  {...args} ref={ref} />;
+    return <RenderValue value={TIcon} props={{ component, ...args, ref }} />;
   }
 
   return <Spin size='small' spinning={loading} />;
@@ -52,7 +52,6 @@ export const getAutoIcon: <T = ReactNode>(name: T) => (T | ReactNode) = (name) =
   }
   return name;
 };
-
 
 export const getAllowClear = (v?: boolean | { clearIcon?: ReactNode | string }) => {
   if (typeof v === 'object' && v?.clearIcon) {

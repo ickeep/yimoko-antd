@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd@5.12.6/dist/reset.css"" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">测试 UMD  的引入</div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-is/18.2.0/umd/react-is.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/history/5.3.0/history.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-router/6.3.0/react-router.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-router-dom/6.3.0/react-router-dom.production.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.6.3/axios.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.10/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/antd@5.12.6/dist/antd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ant-design/icons@5.2.6/dist/index.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/path@2.3.1/dist/formily.path.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/shared@2.3.1/dist/formily.shared.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/reactive@2.3.1/dist/formily.reactive.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/validator@2.3.1/dist/formily.validator.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/core@2.3.1/dist/formily.core.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/reactive-react@2.3.1/dist/formily.reactive-react.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/json-schema@2.3.1/dist/formily.json-schema.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@formily/react@2.3.1/dist/formily.react.umd.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yimoko/store@2.0.18/dist/yimoko-store.umd.js"></script>
+    <script src="../dist/yimoko-antd.umd.js"></script>
+    <script>
+    const e = React.createElement;
+    const domContainer = document.querySelector('#root');
+    const root = ReactDOM.createRoot(domContainer);
+    root.render(e(YimokoAntd.Icon, { name: 'UserOutlined' }));
+    </script>
+  </body>
+</html>
