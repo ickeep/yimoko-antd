@@ -81,13 +81,19 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+
 import { HtmlEditor } from './pro/html-editor';
 import { JSONEditor } from './pro/json-editor';
+
 import { RowAction } from './store/action/row-action';
 import { RowActionDel } from './store/action/row-action-del';
 import { RowActionSwitch } from './store/action/row-action-switch';
 import { StoreDesc } from './store/desc';
 import { FormItem, StoreForm } from './store/form';
+import { AddLink } from './store/link/add-link';
+import { DetailLink } from './store/link/detail-link';
+import { EditLink } from './store/link/edit-link';
+import { ListLink } from './store/link/list-link';
 import { ListBarForm } from './store/list-bar-form';
 import { PageBarHeader } from './store/page-bar-header';
 import { Reset } from './store/reset';
@@ -206,6 +212,11 @@ export const components: Record<string, ComponentType<any>> = {
   RowActionDel,
   RowActionSwitch,
   RowAction,
+
+  AddLink,
+  DetailLink,
+  EditLink,
+  ListLink,
 
   Reset,
   Submit,
