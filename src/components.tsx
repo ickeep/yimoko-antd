@@ -88,6 +88,12 @@ import { JSONEditor } from './pro/json-editor';
 import { RowAction } from './store/action/row-action';
 import { RowActionDel } from './store/action/row-action-del';
 import { RowActionSwitch } from './store/action/row-action-switch';
+import { RowsAction } from './store/action/rows-action';
+import { RowsActionDel } from './store/action/rows-action-del';
+import { RowsActionDisable } from './store/action/rows-action-disable';
+import { RowsActionEnable } from './store/action/rows-action-enable';
+import { Back } from './store/back';
+import { BatchBarAction } from './store/batch-bar-actions';
 import { StoreDesc } from './store/desc';
 import { FormItem, StoreForm } from './store/form';
 import { AddLink } from './store/link/add-link';
@@ -95,6 +101,7 @@ import { DetailLink } from './store/link/detail-link';
 import { EditLink } from './store/link/edit-link';
 import { ListLink } from './store/link/list-link';
 import { ListBarForm } from './store/list-bar-form';
+import { PageBarActions } from './store/page-bar-actions';
 import { PageBarHeader } from './store/page-bar-header';
 import { Reset } from './store/reset';
 import { Submit } from './store/submit';
@@ -206,12 +213,17 @@ export const components: Record<string, ComponentType<any>> = {
   StoreForm,
   StoreTable,
 
+  BatchBarAction,
   ListBarForm,
   PageBarHeader,
 
   RowActionDel,
   RowActionSwitch,
   RowAction,
+  RowsActionDel,
+  RowsActionDisable,
+  RowsActionEnable,
+  RowsAction,
 
   AddLink,
   DetailLink,
@@ -220,6 +232,8 @@ export const components: Record<string, ComponentType<any>> = {
 
   Reset,
   Submit,
+  Back,
+  PageBarActions,
 
   // pro
   HtmlEditor,

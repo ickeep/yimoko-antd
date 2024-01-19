@@ -86,17 +86,27 @@ export * from './out/tooltip';
 export * from './out/tour';
 export * from './out/tree';
 
-export * from './store/action/row-action';
 export * from './store/action/row-action-del';
 export * from './store/action/row-action-switch';
+export * from './store/action/row-action';
+export * from './store/action/rows-action-del';
+export * from './store/action/rows-action-disable';
+export * from './store/action/rows-action-enable';
+export * from './store/action/rows-action';
+
 export * from './store/link/add-link';
 export * from './store/link/detail-link';
 export * from './store/link/edit-link';
 export * from './store/link/list-link';
+
+export * from './store/back';
+export * from './store/batch-bar-actions';
+
 export * from './store/config';
 export * from './store/desc';
 export * from './store/form';
 export * from './store/list-bar-form';
+export * from './store/page-bar-actions';
 export * from './store/page-bar-header';
 export * from './store/reset';
 export * from './store/submit';
