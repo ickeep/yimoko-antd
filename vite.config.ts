@@ -22,6 +22,7 @@ export default defineConfig({
         'react',
         'react-is',
         'react-dom',
+        'react-router',
         'react-router-dom',
         'lodash-es',
         'axios',

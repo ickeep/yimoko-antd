@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { useBoxContent, Trigger, TriggerProps } from '@yimoko/store';
-import { Button, ButtonProps } from 'antd';
-import React from 'react';
+import { Button, ButtonProps, ConfigProvider } from 'antd';
+import React, { useContext } from 'react';
 
 export interface OkTriggerProps extends ButtonProps {
   closeBox?: boolean
@@ -11,11 +11,13 @@ export interface OkTriggerProps extends ButtonProps {
 export const OkTrigger = observer((props: OkTriggerProps) => {
   const { closeBox = true, onOk, ...args } = props;
   const { onClose } = useBoxContent();
+  const context = useContext(ConfigProvider.ConfigContext);
+  const okText = context.locale?.Modal?.okText;
 
   return (
     <Trigger
       component={Button}
-      children="确定"
+      children={okText}
       type='primary'
       {...args}
       onTrig={(e) => {

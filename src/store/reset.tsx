@@ -1,16 +1,18 @@
 import { useCurStore } from '@yimoko/store';
-import { ButtonProps } from 'antd';
-import React from 'react';
+import { ButtonProps, ConfigProvider } from 'antd';
+import React, { useContext } from 'react';
 
 import { Button } from '../base/button';
 
 export const Reset = (props: ButtonProps) => {
   const { onClick, onKeyDown, ...rest } = props;
   const curStore = useCurStore();
+  const context = useContext(ConfigProvider.ConfigContext);
+  const filterReset = context.locale?.Table?.filterReset;
 
   return (
     <Button
-      children='重置'
+      children={filterReset}
       {...rest}
       onClick={(e) => {
         onClick?.(e);

@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { BoxContentProvider, BoxContentRender, IStore, useBoxContent, useBoxStore, Trigger, TriggerProps } from '@yimoko/store';
-import { ButtonProps, Drawer as ADrawer, DrawerProps as ADrawerProps, Row, RowProps, Space } from 'antd';
-import React, { ReactElement, FC, Component, useMemo, ReactNode } from 'react';
+import { ButtonProps, Drawer as ADrawer, DrawerProps as ADrawerProps, Row, RowProps, Space, ConfigProvider } from 'antd';
+import React, { ReactElement, FC, Component, useMemo, ReactNode, useContext } from 'react';
 
 import { Button } from '../base/button';
 import { CancelTrigger } from '../out/cancel-trigger';
@@ -51,6 +51,9 @@ const DrawerRender = observer((props: Omit<DrawerProps, 'trigger' | 'onOpen'>) =
   const boxStore = useBoxContent();
   const { close } = boxStore;
 
+  const context = useContext(ConfigProvider.ConfigContext);
+  const justOkText = context.locale?.Modal?.justOkText;
+
   const isBind = useMemo(() => isBindStore ?? !!store, [isBindStore, store]);
 
   const curFooter = useMemo(() => {
@@ -62,12 +65,12 @@ const DrawerRender = observer((props: Omit<DrawerProps, 'trigger' | 'onOpen'>) =
               <CancelTrigger {...cancelButtonProps} onCancel={close} />
               <RunTrigger {...okButtonProps} store={store} isBoxContent />
             </Space>
-            : <OkTrigger children="知道了" {...okButtonProps} onOk={close} />}
+            : <OkTrigger children={justOkText} {...okButtonProps} onOk={close} />}
         </Row>
       );
     }
     return footer;
-  }, [cancelButtonProps, close, footer, footerRowProps, isBind, okButtonProps, store]);
+  }, [cancelButtonProps, close, footer, footerRowProps, isBind, justOkText, okButtonProps, store]);
 
   return (
     <ADrawer {...args} footer={curFooter} onClose={close}>

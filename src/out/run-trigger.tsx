@@ -1,7 +1,7 @@
 import { observer } from '@formily/react';
 import { BoxStore, IStore, judgeIsEmpty, judgeIsSuccess, useBoxContent, useCurForm, useCurStore, Trigger } from '@yimoko/store';
-import { Button, ButtonProps } from 'antd';
-import React from 'react';
+import { Button, ButtonProps, ConfigProvider } from 'antd';
+import React, { useContext } from 'react';
 
 
 export interface RunTriggerProps extends ButtonProps {
@@ -18,6 +18,9 @@ export const RunTrigger = observer((props: RunTriggerProps) => {
   const curStore = isBoxContent ? contentStore : useStore;
   const curForm = useCurForm(undefined, curStore);
 
+  const context = useContext(ConfigProvider.ConfigContext);
+  const okText = context.locale?.Modal?.okText;
+
   const trig = () => {
     trigStoreRun(curStore, boxStore, closeBox);
   };
@@ -27,7 +30,7 @@ export const RunTrigger = observer((props: RunTriggerProps) => {
       component={Button}
       loading={curStore?.loading}
       disabled={!judgeIsEmpty(curForm?.errors)}
-      children="确定"
+      children={okText}
       type='primary'
       {...args}
       onTrig={trig}
