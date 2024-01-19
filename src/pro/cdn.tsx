@@ -1,1 +1,1 @@
-export const DEFAULT_CDN = 'https://cdn.staticfile.org/';
+export const DEFAULT_CDN = 'https://cdn.staticfile.net/';

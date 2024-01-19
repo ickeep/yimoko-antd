@@ -1,137 +1,119 @@
 import { observer } from '@formily/react';
-import { IDomEditor, IEditorConfig, IToolbarConfig, SlateDescendant } from '@wangeditor/editor';
-import { Editor as WEditor, Toolbar as WToolbar } from '@wangeditor/editor-for-react';
-import { judgeIsSuccess } from '@yimoko/store';
-import React, { useState, useEffect, useMemo, ReactNode } from 'react';
-import { LoadDepend, LoadDependProps } from 'src/base/load-depend';
+import * as WangEditor from '@wangeditor/editor';
+import { IEditorConfig, IToolbarConfig, SlateDescendant } from '@wangeditor/editor';
+import React, { useEffect, useImperativeHandle, useRef } from 'react';
 
-// import { IUploadOptions, LoadDependCOS, UploadByCOS } from '../tools/cos';
-export interface HtmlEditorProps {
-  value: string;
+import { LoadDepend, LoadDependProps } from '../base/load-depend';
+import { useConfig } from '../store/config';
+
+import { DEFAULT_CDN } from './cdn';
+
+const bVal = '1px solid #f0f0f0';
+
+export const LoadDependHtmlEditor = observer((props: Omit<LoadDependProps, 'js' | 'css'>) => {
+  const config = useConfig();
+  return (
+    <LoadDepend
+      {...props}
+      js={config?.deep?.wangEditor?.js ?? [{ src: `${DEFAULT_CDN}wangeditor5/5.1.23/index.min.js`, name: 'wangEditor' }]}
+      css={config?.deep?.wangEditor?.css ?? [`${DEFAULT_CDN}wangeditor5/5.1.23/css/style.min.css`]}
+    />
+  );
+});
+
+export const HtmlEditor = React.forwardRef((props: HtmlEditorProps, ref) => (
+  <LoadDependHtmlEditor >
+    <HtmlEditorContent {...props} ref={ref} />
+  </LoadDependHtmlEditor>
+));
+
+const HtmlEditorContent = React.forwardRef((props: HtmlEditorProps, ref) => {
+  const g = globalThis as Record<string, any>;
+  const wangEditor = g.wangEditor as typeof WangEditor;
+  const { value, onChange, toolbar: toolbarConf, editor: editorConf, style, ...rest } = props;
+  const editorEL = useRef<HTMLDivElement>(null);
+  const toolbarEL = useRef<HTMLDivElement>(null);
+
+  const editor = useRef<WangEditor.IDomEditor>();
+  const toolbar = useRef<WangEditor.Toolbar>();
+
+  useImperativeHandle(ref, () => ({
+    editor: editor.current,
+    toolbar: toolbar.current,
+  }), []);
+
+  useEffect(() => {
+    if (editorEL.current && !editor.current) {
+      editor.current = wangEditor.createEditor({
+        selector: editorEL.current,
+        config: {
+          ...editorConf?.config,
+          onChange: (er) => {
+            const html = er.getHtml();
+            if (html !== props.value) {
+              props?.onChange?.(er.getHtml(), er);
+              editorConf?.config?.onChange?.(er);
+            }
+          },
+          onDestroyed: (er) => {
+            editorConf?.config?.onDestroyed?.(er);
+            editor.current = undefined;
+          },
+        },
+        mode: editorConf?.mode ?? 'default',
+        content: editorConf?.content,
+        html: editorConf?.html,
+      });
+    }
+    // 使用 props 特意忽略 onChange
+  }, [editorConf?.config, editorConf?.content, editorConf?.html, editorConf?.mode, props, wangEditor]);
+
+  useEffect(() => {
+    if (toolbarConf !== false && toolbarEL.current && !toolbar.current && editor.current) {
+      const er = wangEditor.createToolbar({
+        editor: editor.current,
+        selector: toolbarEL.current,
+        config: toolbarConf?.config,
+        mode: toolbarConf?.mode,
+      });
+      toolbar.current = er;
+    }
+  }, [editor, toolbarConf, wangEditor]);
+
+  // value 变化，重置 HTML
+  useEffect(() => {
+    if (editor.current && value !== editor.current.getHtml()) {
+      try {
+        editor.current.setHtml(value ?? '');
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, [value]);
+
+  return (
+    <div {...rest} style={{ border: bVal, zIndex: 100, ...style }}>
+      {toolbarConf !== false && <div className={toolbarConf?.className} style={{ borderBottom: bVal, ...toolbarConf?.style }} ref={toolbarEL} />}
+      <div className={editorConf?.className} ref={editorEL} style={{ height: '400px', overflowY: 'hidden', ...editorConf?.style }} />
+    </div>
+  );
+});
+
+export type HtmlEditorProps = Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> & {
+  value?: string;
   onChange?: (value: string, ...rest: any[]) => void;
-  // upload?: IUploadOptions
-  toolbar?: {
-    defaultConfig?: Partial<IToolbarConfig>;
+  toolbar?: false | {
+    config?: Partial<IToolbarConfig>;
     className?: string;
     mode?: string;
     style?: React.CSSProperties;
   }
   editor?: {
-    defaultConfig?: Partial<IEditorConfig>;
-    defaultContent?: SlateDescendant[];
-    defaultHtml?: string;
+    config?: Partial<IEditorConfig>;
+    content?: SlateDescendant[];
+    html?: string;
     className?: string;
     mode?: string;
     style?: React.CSSProperties;
   }
-}
-
-const bVal = '1px solid #d9d9d9';
-
-
-export const LoadDependHtmlEditor = observer((props: Omit<LoadDependProps, 'js' | 'css'>) => (
-  <LoadDepend
-    js={[
-      { src: 'https://cdn.staticfile.org/KaTeX/0.16.4/katex.min.js', name: 'katex' },
-      { src: 'https://cdn.staticfile.org/wangeditor5/5.1.23/index.min.js', name: 'wangEditor' },
-    ]}
-  >
-    <LoadDepend {...props}
-      js={[
-        { src: 'https://npm.ickeep.com/@wangeditor/editor-for-react/1.0.6/dist/index.min.js', name: 'WangEditorForReact' },
-        { src: 'https://npm.ickeep.com/@wangeditor/plugin-formula/1.0.11/dist/index.min.js', name: 'WangEditorPluginFormula' },
-      ]}
-    />
-  </LoadDepend>
-));
-
-const HtmlEditorRegister = observer(({ children }: { children: ReactNode }) => {
-  useEffect(() => {
-    if (!isRegister) {
-      isRegister = true;
-      const g = globalThis as Record<string, any>;
-      g.wangEditor.Boot.registerModule(g.WangEditorPluginFormula.default);
-    }
-  }, []);
-  return <>{children}</>;
-});
-
-let isRegister = false;
-
-export const HtmlEditor = observer((props: HtmlEditorProps) => (
-  <LoadDependHtmlEditor >
-    <HtmlEditorRegister >
-      <HtmlEditorContent {...props} />
-    </HtmlEditorRegister>
-  </LoadDependHtmlEditor>
-));
-
-const HtmlEditorContent = observer((props: HtmlEditorProps) => {
-  const { value, onChange, toolbar, editor: editorConf, upload } = props;
-  const [editor, setEditor] = useState<IDomEditor | null>(null);
-
-  // const imgUploader = useMemo(() => getUploader(upload, 'img'), [upload]);
-  // const videoUploader = useMemo(() => getUploader(upload, 'video'), [upload]);
-
-  const curToolBar = useMemo(() => ({
-    mode: 'default',
-    style: { borderBottom: bVal }, ...toolbar,
-    defaultConfig: {
-      insertKeys: {
-        index: 0,
-        keys: [
-          'insertFormula', // “插入公式”菜单
-          'editFormula', // “编辑公式”菜单
-        ],
-      },
-      ...toolbar?.defaultConfig,
-    },
-  }), [toolbar]);
-
-  const curEditorConf: HtmlEditorProps['editor'] = useMemo(() => ({
-    mode: 'default',
-    ...editorConf,
-    style: { height: '400px', overflowY: 'hidden', ...editorConf?.style },
-    defaultConfig: {
-      placeholder: '请输入内容...', hoverbarKeys: {
-        formula: {
-          menuKeys: ['editFormula'], // “编辑公式”菜单
-        },
-      },
-      // MENU_CONF: {
-      //   uploadImage: {
-      //     customUpload: imgUploader,
-      //   },
-      //   uploadVideo: {
-      //     customUpload: videoUploader,
-      //   },
-      // },
-      ...editorConf?.defaultConfig,
-    },
-  }), [editorConf]);
-
-  // 及时销毁 editor ，重要！
-  useEffect(() => () => {
-    if (editor === null) return;
-    editor.destroy();
-    setEditor(null);
-  }, [editor]);
-  const g = globalThis as Record<string, any>;
-  const Editor = g.WangEditorForReact.Editor as typeof WEditor;
-  const Toolbar = g.WangEditorForReact.Toolbar as typeof WToolbar;
-
-  return (
-    <div style={{ border: bVal, zIndex: 100 }}>
-      <Toolbar {...curToolBar} editor={editor} />
-      <Editor
-        {...curEditorConf}
-        value={value}
-        onCreated={setEditor}
-        // @ts-ignore
-        onChange={editor => editor.getText() !== value && onChange?.(editor.getHtml(), editor)}
-      />
-    </div>
-  );
-});
-
-type InsertFnType = (url: string, alt: string, href: string) => void;
+};

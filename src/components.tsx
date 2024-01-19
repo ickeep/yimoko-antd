@@ -81,6 +81,7 @@ import { Timeline } from './out/timeline';
 import { Tooltip } from './out/tooltip';
 import { Tour } from './out/tour';
 import { Tree } from './out/tree';
+import { HtmlEditor } from './pro/html-editor';
 import { JSONEditor } from './pro/json-editor';
 import { RowAction } from './store/action/row-action';
 import { RowActionDel } from './store/action/row-action-del';
@@ -210,5 +211,6 @@ export const components: Record<string, ComponentType<any>> = {
   Submit,
 
   // pro
+  HtmlEditor,
   JSONEditor,
 };

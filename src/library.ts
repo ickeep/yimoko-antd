@@ -98,6 +98,7 @@ export * from './store/reset';
 export * from './store/submit';
 export * from './store/table';
 
+export * from './pro/html-editor';
 export * from './pro/json-editor';
 
 export * from './components';

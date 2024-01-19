@@ -13,6 +13,7 @@ import { GridDemo } from './layout/grid';
 import { SpaceDemo } from './layout/space';
 import { MenuDemo } from './nav/menu';
 import { TreeDemo } from './out/tree';
+import { HtmlEditorDemo } from './pro/html-editor';
 import { JSONEditorDemo } from './pro/json-editor';
 import { StoreDescDemo } from './store/desc';
 import { StoreTableDemo } from './store/table';
@@ -60,6 +61,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
   },
   {
     path: '/pro/', name: 'pro', children: [
+      { path: 'html-editor', name: 'HtmlEditor', component: HtmlEditorDemo },
       { path: 'json-editor', name: 'JSONEditor', component: JSONEditorDemo },
     ],
   },
