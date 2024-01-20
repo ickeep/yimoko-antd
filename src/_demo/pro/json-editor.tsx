@@ -14,7 +14,7 @@ export const JSONEditorDemo = () => (
 );
 
 const JSONEditorJSX = observer(() => {
-  const store = useStore({ defaultValues: { c: '1', obj: {} } });
+  const store = useStore({ defaultValues: { c: '1', obj: { a: 'a' } } });
   console.log(store.values.obj);
   const ref = React.useRef<any>();
 
@@ -28,7 +28,7 @@ const JSONEditorJSX = observer(() => {
 
 const JSONEditorSchema = () => (
   <StorePage
-    store={{ defaultValues: { c: true, group: [], obj: {} } }}
+    store={{ defaultValues: { c: true, group: [], obj: { a: 'a' }, readOnly: { a: 'a' } } }}
     components={{ JSONEditor }}
     schema={{
       type: 'object',
@@ -36,6 +36,13 @@ const JSONEditorSchema = () => (
         obj: {
           type: 'object',
           'x-component': 'JSONEditor',
+        },
+        readOnly: {
+          type: 'object',
+          'x-component': 'JSONEditor',
+          'x-component-props': {
+            readOnly: true,
+          },
         },
       },
     }}
