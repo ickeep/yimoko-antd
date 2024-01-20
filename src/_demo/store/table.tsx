@@ -16,6 +16,14 @@ const listStore = new ListStore({
   fieldsConfig: {
     name: { title: '名称', column: { width: 100, autoFilter: true } },
     time: { column: { width: 100, schema: { type: 'string', 'x-component': 'DateDisplay' } } },
+    bool: {
+      column: {
+        width: 70,
+        // filter: true,
+        filters: [{ text: '是', value: true }, { text: '否', value: false }],
+        filterMultiple: false,
+      },
+    },
   },
   isBindRouter: false,
 });
@@ -50,7 +58,7 @@ const StoreTableSchema = () => (
           type: 'void',
           'x-component': 'StoreTable',
           'x-component-props': {
-            columns: ['name', 'time'],
+            columns: ['name', 'time', 'bool'],
           },
         },
       },

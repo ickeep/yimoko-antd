@@ -119,9 +119,14 @@ export const StoreTable: <T = any>(props: StoreTableProps<T>) => ReturnType<FC> 
         const newValues: Record<any, any> = { [page]: 1 };
         Object.entries(filters).forEach(([key, value]) => {
           const val = value === null ? [] : value;
-          const type = getFieldType(key, curStore) ?? 'string';
-          const splitter = getFieldSplitter(key, curStore);
-          newValues[key] = type === 'string' ? val.join(splitter) : val;
+          const col = curColumns.find(item => item.dataIndex === key);
+          if (col?.filterMultiple === false) {
+            newValues[key] = val?.[0];
+          } else {
+            const type = getFieldType(key, curStore) ?? 'string';
+            const splitter = getFieldSplitter(key, curStore);
+            newValues[key] = type === 'string' ? val.join(splitter) : val;
+          }
         });
         setValues(newValues);
         queryData();
