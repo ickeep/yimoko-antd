@@ -90,7 +90,7 @@ const JSONEditorContent = React.forwardRef((props: JSONEditorProps, ref: React.R
 
   useEffect(() => () => editor?.destroy(), [editor]);
 
-  return <><div ref={elRef} style={style} />{children}</>;
+  return <><div ref={elRef} style={{ width: '100%', ...style }} />{children}</>;
 });
 
 export interface JSONEditorProps<T = any> extends Omit<JSONEditorOptions, 'onChange'> {
