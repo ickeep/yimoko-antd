@@ -12,14 +12,14 @@ const listStore = new ListStore({
         { id: 2, name: 'name2', time: '1704380336' }],
     },
   }),
-  defaultValues: {},
+  defaultValues: { bool: true, name: 'name1,name2' },
   fieldsConfig: {
     name: { title: '名称', column: { width: 100, autoFilter: true } },
     time: { column: { width: 100, schema: { type: 'string', 'x-component': 'DateDisplay' } } },
     bool: {
       column: {
         width: 70,
-        // filter: true,
+        autoFilter: true,
         filters: [{ text: '是', value: true }, { text: '否', value: false }],
         filterMultiple: false,
       },

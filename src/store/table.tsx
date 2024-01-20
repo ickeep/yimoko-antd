@@ -366,7 +366,10 @@ const getFilteredValue = (field: string | number, store: ListStore<any, any>) =>
   } if (typeof val === 'string' && val) {
     return val.split(getFieldSplitter(field, store));
   }
-  return null;
+  if (judgeIsEmpty(val)) {
+    return null;
+  }
+  return [val];
 };
 
 const getSortProps = (col: ColumnType<any>, store: ListStore<any, any>, isBindValues: boolean) => {
