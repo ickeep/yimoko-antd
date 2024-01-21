@@ -67,7 +67,11 @@ const JSONEditorContent = React.forwardRef((props: JSONEditorProps, ref: React.R
         },
       });
       // 初始化值 editor 使用 ref 保存 当其变化时不会触发 effect
-      jEditor.set(props.value);
+      if (typeof props.value === 'string') {
+        jEditor.setText(props.value);
+      } else {
+        jEditor.set(props.value);
+      }
       editorRef.current = jEditor;
     }
   }, [rest, disabled, readOnly]);
@@ -101,5 +105,5 @@ export interface JSONEditorProps<T = any> extends Omit<JSONEditorOptions, 'onCha
   children?: ReactNode;
   onChange?: (value: T) => void;
   style?: React.CSSProperties;
-  ref: React.Ref<{ editor?: JsonEditor } | undefined>
+  ref?: React.Ref<{ editor?: JsonEditor } | undefined>
 }

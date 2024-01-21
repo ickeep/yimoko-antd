@@ -14,7 +14,7 @@ export const JSONEditorDemo = () => (
 );
 
 const JSONEditorJSX = observer(() => {
-  const store = useStore({ defaultValues: { c: '1', obj: { a: 'a' } } });
+  const store = useStore({ defaultValues: { c: '1', obj: JSON.stringify({ a: 'a' }) } });
   console.log(store.values.obj);
   const ref = React.useRef<any>();
 
