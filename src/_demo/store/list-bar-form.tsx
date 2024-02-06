@@ -5,17 +5,22 @@ import React, { useEffect } from 'react';
 import { Tabs, ListBarForm } from '@/library';
 
 const listStore = new ListStore({
-  api: () => Promise.resolve({
-    code: 0, data: {
-      page: 1, pageSize: 10, total: 100, data: [
-        { id: 1, name: 'name1', time: '1704380336' },
-        { id: 2, name: 'name2', time: '1704380336' }],
-    },
-  }),
-  defaultValues: { bool: true, name: 'name1,name2' },
+  api: (data) => {
+    console.log('api data', data);
+    return Promise.resolve({
+      code: 0, data: {
+        page: 1, pageSize: 10, total: 100, data: [
+          { id: 1, name: 'name1', time: '1704380336' },
+          { id: 2, name: 'name2', time: '1704380336' }],
+      },
+    });
+  },
+  defaultValues: { bool: true, name: 'name1,name2', start: '', end: '' },
   fieldsConfig: {
     name: { title: '名称', column: { width: 100, autoFilter: true } },
     time: { column: { width: 100, schema: { type: 'string', 'x-component': 'DateDisplay' } } },
+    start: { type: 'number' },
+    end: { type: 'number' },
     bool: {
       column: {
         width: 70,
@@ -25,7 +30,7 @@ const listStore = new ListStore({
       },
     },
   },
-  isBindRouter: false,
+  isBindRouter: true,
 });
 
 export const ListBarFormDemo = () => (
@@ -58,11 +63,15 @@ const ListBarFormSchema = () => (
           type: 'void',
           'x-component': 'ListBarForm',
           properties: {
-            'start,end': {
+            '[start, end]': {
               type: 'range',
               title: '时间',
               'x-decorator': 'FormItem',
               'x-component': 'DatePicker.RangePicker',
+              'x-component-props': {
+                dataValueType: 'second',
+                showTime: true,
+              },
             },
           },
         },
