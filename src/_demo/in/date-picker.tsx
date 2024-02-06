@@ -9,7 +9,7 @@ const { RangePicker } = DatePicker;
 
 export const DatePickerDemo = () => (
   <div>
-    <Tabs defaultActiveKey="JSX" items={[
+    <Tabs defaultActiveKey="schema" items={[
       { key: 'JSX', label: 'JSX 调用', children: <DatePickerJSX /> },
       { key: 'schema', label: 'Schema', children: <DatePickerSchema /> },
     ]} />
@@ -19,12 +19,14 @@ export const DatePickerDemo = () => (
 const DatePickerJSX = observer(() => {
   const store = useStore({
     defaultValues: {
+      timeSecond: 1638691200,
       day: '', week: '', month: '', quarter: '', year: '', time: '', f1: '', f2: '', f3: '',
       rDay: [], rWeek: [], rMonth: [], rQuarter: [], rYear: [], rTime: [], rF1: [], rF2: [], rF3: [],
     },
   });
   const { setValues, values } = store;
   const {
+    timeSecond,
     day, week, month, quarter, year, time, f1, f2, f3,
     rDay, rWeek, rMonth, rQuarter, rYear, rTime, rF1, rF2, rF3,
   } = values;
@@ -54,6 +56,9 @@ const DatePickerJSX = observer(() => {
 
     <Divider orientation="left">受控</Divider>
     <Space direction="vertical">
+
+      {/* @ts-ignore */}
+      <DatePicker showTime value={timeSecond} onChange={v => setValues({ timeSecond: v })} dataValueType='second' />
       <DatePicker value={day} onChange={v => setValues({ day: v })} dataValueType='dayjs' />
       <DatePicker value={week} onChange={v => setValues({ week: v })} dataValueType="millisecond" picker="week" />
       <DatePicker value={month} onChange={v => setValues({ month: v })} dataValueType="second" picker="month" />
@@ -97,11 +102,22 @@ const DatePickerJSX = observer(() => {
 
 const DatePickerSchema = () => (
   <StorePage
-    store={{ defaultValues: { c: true, group: [] } }}
+    store={{ defaultValues: { timeSecond: 1638691200 } }}
     components={{ DatePicker }}
     schema={{
       type: 'object',
-
-    }}
+      properties: {
+        timeSecond: {
+          type: 'number',
+          title: '时间戳',
+          'x-component': 'DatePicker',
+          'x-component-props': {
+            dataValueType: 'second',
+            showTime: true,
+          },
+        },
+      },
+    }
+    }
   />
 );

@@ -2,11 +2,11 @@ import { judgeIsEmpty, useAdditionalNode } from '@yimoko/store';
 import { DatePicker as AntDatePicker, DatePickerProps as AntDatePickerProps } from 'antd';
 import { RangePickerBaseProps, RangePickerDateProps, RangePickerTimeProps } from 'antd/lib/date-picker/generatePicker';
 import dayjs, { Dayjs, OptionType } from 'dayjs';
-import React, { forwardRef, useMemo } from 'react';
+import React, { ComponentProps, forwardRef, useMemo } from 'react';
 
 import { getAllowClear, getAutoIcon } from '../base/icon';
 
-export type DatePickerProps<T = string> = Omit<AntDatePickerProps, 'defaultValue' | 'value' | 'onChange'> & {
+export type DatePickerProps<T = string> = Omit<ComponentProps<typeof AntDatePicker>, 'defaultValue' | 'value' | 'onChange'> & {
   value?: T
   defaultValue?: T
   onChange?: (value: T, day: Dayjs | null) => void
