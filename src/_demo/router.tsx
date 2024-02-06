@@ -16,6 +16,7 @@ import { TreeDemo } from './out/tree';
 import { HtmlEditorDemo } from './pro/html-editor';
 import { JSONEditorDemo } from './pro/json-editor';
 import { StoreDescDemo } from './store/desc';
+import { ListBarFormDemo } from './store/list-bar-form';
 import { StoreTableDemo } from './store/table';
 
 
@@ -57,6 +58,7 @@ export const ROUTES_CONF: Array<IRouteConf> = [
     path: '/store/', name: 'store', children: [
       { path: 'desc', name: 'StoreTable desc 描述', component: StoreDescDemo },
       { path: 'table', name: 'StoreTable store 表格', component: StoreTableDemo },
+      { path: 'list-bar-form', name: 'ListBarForm 列表查询 bar', component: ListBarFormDemo },
     ],
   },
   {

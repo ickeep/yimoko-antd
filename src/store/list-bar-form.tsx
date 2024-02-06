@@ -7,7 +7,7 @@ import { FormItem, FormItemProps, StoreForm, StoreFormProps } from './form';
 import { Submit } from './submit';
 
 export const ListBarForm = observer((props: ListBarFormProps) => {
-  const { store, isCheckRequired = false, isReset = true, queryProps, fields, resetProps, actionProps, ...rest } = props;
+  const { store, isCheckRequired = false, isReset = true, queryProps, fields, resetProps, actionProps, children, ...rest } = props;
   const curStore = useCurStore(store) as IStore;
   const curForm = useCurForm(undefined, curStore);
 
@@ -20,6 +20,7 @@ export const ListBarForm = observer((props: ListBarFormProps) => {
 
   return (
     <StoreForm row={{ gutter: 10 }} col={{ span: 8 }} {...rest} fields={curFields}   >
+      {children}
       <FormItem colon={false} {...actionProps} >
         <Space>
           <Submit {...queryProps} disabled={!judgeIsEmpty(curForm?.errors)} >查询</Submit>
