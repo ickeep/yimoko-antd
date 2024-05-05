@@ -152,6 +152,12 @@ const valueToDayjs = (value: DatePickerProps['value'], dataValueType: DatePicker
     }
     return dayjs(value);
   }
+  if (/^\d+$/.test(value)) {
+    if (dataValueType === 'second') {
+      return dayjs.unix(Number(value));
+    }
+    return dayjs(Number(value));
+  }
   // 如果 format 为空 则根据 picker 自动推断
   let curFormat = format;
   if (!curFormat) {
