@@ -7,7 +7,7 @@ import { ColumnType } from 'antd/lib/table';
 import { ColumnFilterItem } from 'antd/lib/table/interface';
 import dayjs from 'dayjs';
 import { get } from 'lodash-es';
-import React, { FC, Key, ReactNode, isValidElement, useCallback, useMemo } from 'react';
+import React, { FC, Key, ReactNode, isValidElement, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { DataIndex, Table, TableProps, dataIndexToKey, schemaToColumns } from '../out/table';
@@ -65,7 +65,7 @@ export const StoreTable: <T = any>(props: StoreTableProps<T>) => ReturnType<FC> 
   }, [data, isBindValues, page, pageSize, pagination, total]);
 
   // 解决默认 rowKey 各 低代码时取 实际数据 index 的问题
-  const getRecordIndex = useCallback(() => {
+  const getRecordIndex = useMemo(() => {
     // 利用闭包 按需生成
     let recordIndexMap: Map<any, number>;
     return (record: any) => {
@@ -77,7 +77,7 @@ export const StoreTable: <T = any>(props: StoreTableProps<T>) => ReturnType<FC> 
       }
       return recordIndexMap.get(record) ?? 0;
     };
-  }, [dataSource])();
+  }, [dataSource]);
 
   const curColumns = useMemo(() => {
     const newColumns = [...columns];

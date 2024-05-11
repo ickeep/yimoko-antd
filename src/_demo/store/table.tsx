@@ -58,6 +58,7 @@ const StoreTableSchema = () => (
           type: 'void',
           'x-component': 'StoreTable',
           'x-component-props': {
+            rowSelection: { fixed: 'left' },
             columns: ['name', 'time', 'bool'],
           },
         },
