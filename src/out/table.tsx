@@ -3,7 +3,7 @@ import { RecordScope, RecordsScope, Schema, observer, useField, useFieldSchema }
 import { ArrayBase, SchemaBox, getItemPropsBySchema, judgeIsEmpty, useChildrenNullishCoalescing, useSchemaField } from '@yimoko/store';
 import { Table as AntTable, TableProps as AntTableProps } from 'antd';
 import { ColumnType as AntColumnType } from 'antd/lib/table';
-import React, { FC, useCallback, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 
 export type TableProps<T = any> = Omit<AntTableProps<T>, 'onChange' | 'columns'> & {
   value?: AntTableProps<T>['dataSource'],
@@ -23,19 +23,19 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
   const SchemaField = useSchemaField();
 
   // 解决默认 rowKey 各 低代码时取 实际数据 index 的问题
-  const getRecordIndex = useCallback(() => {
+  const getRecordIndex = useMemo(() => {
     // 利用闭包 按需生成
     let recordIndexMap: Map<any, number>;
     return (record: any) => {
       if (!recordIndexMap) {
         recordIndexMap = new Map();
-        curDataSource?.forEach((item, index) => {
+        dataSource?.forEach((item: any, index: any) => {
           recordIndexMap.set(item, index);
         });
       }
       return recordIndexMap.get(record) ?? 0;
     };
-  }, [curDataSource])();
+  }, [dataSource]);
 
   const curColumns = useMemo(() => {
     // 处理 schema 的函数
