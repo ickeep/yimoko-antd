@@ -412,9 +412,15 @@ export const judgeIsAutoFilter = (column: IColumnType<any>) => {
   return autoFilter && !onFilter && !filters;
 };
 
-export type IDfPagination = Required<Pick<TablePaginationConfig, 'defaultPageSize' | 'size' | 'showQuickJumper' | 'showSizeChanger'>>;
+export type IDfPagination = Required<Pick<TablePaginationConfig, 'defaultPageSize' | 'size' | 'showQuickJumper' | 'showSizeChanger' | 'showTotal'>>;
 
-export const DF_PAGINATION: IDfPagination = { defaultPageSize: 20, size: 'small', showQuickJumper: true, showSizeChanger: true };
+export const DF_PAGINATION: IDfPagination = {
+  defaultPageSize: 20,
+  size: 'small',
+  showQuickJumper: true,
+  showSizeChanger: true,
+  showTotal: (total, range) => `第${range[0]}-${range[1]}条/共${total}条`,
+};
 
 export interface ISortOrder {
   field: string,

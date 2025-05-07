@@ -3,7 +3,7 @@ import { RecordScope, RecordsScope, Schema, observer, useField, useFieldSchema }
 import { ArrayBase, SchemaBox, getItemPropsBySchema, judgeIsEmpty, useChildrenNullishCoalescing, useSchemaField } from '@yimoko/store';
 import { Table as AntTable, TableProps as AntTableProps } from 'antd';
 import { ColumnType as AntColumnType } from 'antd/lib/table';
-import React, { FC, useMemo } from 'react';
+import React, { FC, useEffect, useMemo } from 'react';
 
 export type TableProps<T = any> = Omit<AntTableProps<T>, 'onChange' | 'columns'> & {
   value?: AntTableProps<T>['dataSource'],
@@ -46,16 +46,20 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
         newCol.children = newCol.children.map(handleSchema);
       } else if ('dataIndex' in col && fieldSchema && schema && !col.render) {
         newCol.render = (v: any, r: any) => {
-          const i = getRecordIndex(r);
-          const key = dataIndexToKey(col.dataIndex);
-          return (
-            <RecordScope getRecord={() => r ?? {}} getIndex={() => i}>
-              {/* @ts-ignore */}
-              <SchemaBox model={createForm({ values: { ...r, [key]: v } })} >
-                <SchemaField schema={{ type: 'object', properties: { [key]: schema } }} />
-              </SchemaBox>
-            </RecordScope>
-          );
+          console.log('rowKey ?? ');
+
+          return <ColRender getRecordIndex={getRecordIndex} col={col} r={r} v={v} />;
+
+          // const i = getRecordIndex(r);
+          // const key = dataIndexToKey(col.dataIndex);
+          // return (
+          //   <RecordScope getRecord={() => r ?? {}} getIndex={() => i}>
+          //     {/* @ts-ignore */}
+          //     <SchemaBox model={createForm({ values: { ...r, [key]: v } })} >
+          //       <SchemaField schema={{ type: 'object', properties: { [key]: schema } }} />
+          //     </SchemaBox>
+          //   </RecordScope>
+          // );
         };
       }
       return newCol;
@@ -72,6 +76,11 @@ export const Table: <T = any>(props: TableProps<T>) => ReturnType<FC> = observer
   }, [SchemaField, columns, fieldSchema, getRecordIndex, isSchemaToColumns, items]);
 
   const curScroll = useTableScroll(scroll, curColumns, defaultColumnsWidth);
+
+  useEffect(() => {
+    console.log('getRecordIndex');
+  }, [getRecordIndex]);
+
 
   return (
     <RecordsScope getRecords={() => curDataSource}>
@@ -105,6 +114,8 @@ export const schemaToColumns = (schema: Schema, getRecordIndex: any, isDecorator
 
     if (!judgeIsEmpty(item['x-component'])) {
       baseProps.render = (v: any, r: any) => {
+        console.log('rowKey ?? ');
+
         const dataIndex = getRecordIndex(r);
         const { children } = getItemPropsBySchema(item, 'Column', dataIndex);
         return (
@@ -152,3 +163,27 @@ export type ColumnsType<RecordType = unknown> = (ColumnGroupType<RecordType> | C
 export const dataIndexToKey = (dataIndex?: DataIndex) => (Array.isArray(dataIndex) ? dataIndex.join('.') : dataIndex) as string | number;
 
 export type DataIndex = string | number | readonly (string | number)[];
+
+// 表格 Col render 两种方式
+// 1. 新建 SchemaBox 传入 model 消耗大，但可以在 jsx 中使用，并且不需要在表格外包一层 RedirectListData
+// 2. 直接 <RecursionField schema={curSchema} name={getRecordIndex(r)} onlyRenderProperties /> 消耗小，但只能在 schema 中使用 并且需要 表格的数据源在 model 的 value 中
+
+const ColRender = (props: any) => {
+  const { getRecordIndex, col, r, v } = props;
+  const SchemaField = useSchemaField();
+
+  const EL = useMemo(() => {
+    console.log('ColRender');
+    const i = getRecordIndex(r);
+    const key = `[${i}].${dataIndexToKey(col.dataIndex)}`;
+
+    return (
+      <RecordScope getRecord={() => r ?? {}} getIndex={() => i}>
+        {/* @ts-ignore */}
+        <SchemaField schema={{ type: 'object', properties: { [key]: col.schema } }} />
+      </RecordScope>
+    );
+  }, [SchemaField, col, getRecordIndex, r]);
+
+  return EL;
+};

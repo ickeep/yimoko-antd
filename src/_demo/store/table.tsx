@@ -2,7 +2,7 @@ import { observer } from '@formily/react';
 import { StorePage, ListStore } from '@yimoko/store';
 import React, { useEffect } from 'react';
 
-import { Tabs, StoreTable } from '@/library';
+import { Tabs, StoreTable, Button, Cascader, Divider, Flex } from '@/library';
 
 const listStore = new ListStore({
   api: () => Promise.resolve({
@@ -59,10 +59,47 @@ const StoreTableSchema = () => (
           'x-component': 'StoreTable',
           'x-component-props': {
             rowSelection: { fixed: 'left' },
-            columns: ['name', 'time', 'bool'],
+            columns: ['name', 'time', 'bool',
+              {
+                dataIndex: 'cate',
+                filterOnClose: false,
+                autoFilter: true,
+                filterDropdown: FilterCateDropdown,
+                filters: '{{curStore.dict.cate}}',
+              },
+            ],
           },
         },
       },
     }}
   />
 );
+
+const FilterCateDropdown = (props: any) => {
+  const { setSelectedKeys, selectedKeys, filters, confirm, clearFilters } = props;
+  const options = (filters ?? []) as any[];
+
+  return (
+    <Flex vertical style={{ minWidth: 200, maxWidth: 350 }}>
+      <Flex style={{ padding: 10 }} justify="space-between">
+        <Button onClick={() => clearFilters?.()} type='link' disabled={selectedKeys?.length < 1} size="small">
+          重置
+        </Button>
+        <Button onClick={() => confirm()} type="primary" size="small">
+          确定
+        </Button>
+      </Flex>
+      <Divider style={{ margin: 0 }} />
+      <div style={{ padding: 10 }}>
+        <Cascader
+          changeOnSelect
+          showSearch
+          options={options}
+          value={selectedKeys as any[]}
+          onChange={v => setSelectedKeys(v)}
+          style={{ width: '100%' }}
+        />
+      </div>
+    </Flex>
+  );
+};
